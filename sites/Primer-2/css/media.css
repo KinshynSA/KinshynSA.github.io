@@ -1,0 +1,125 @@
+@media screen and (max-width: 1280px){
+	.main-head nav{
+		width: calc(100% - 150px);
+	}
+}
+@media screen and (max-width: 1000px){
+	.flex-block{
+		flex-wrap: wrap;
+	}
+	.main-head{
+		max-height: 31px;
+		background-color: #ffffff;
+		overflow: hidden;
+		transition: all 1s ease-in-out;
+	}
+	.main-head.active{
+		background-color: #ffffff;
+	}
+	.main-head.open{
+		max-height: 1000px;
+	}
+	.main-head>div{
+		padding-top: 0;
+		padding-bottom: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.main-head.active>div{
+		padding-top: 0;
+	}
+	.logotype{
+		display: none;
+	}
+	.main-head nav{
+		width: 100%;
+	}
+	.main-head .menu-open{
+		display: inline-block;
+    	width: 100%;
+    	padding-top: 4px;
+    	padding-bottom: 4px;
+    	padding-right: 4px;
+    	padding-left: 4px;
+    	background-color: #3f3640;
+    	color: #ffffff;
+		font-size: 24px;
+		text-align: center;
+		border-bottom: 1px solid #333333;
+	}
+	.main-head nav a{
+    	width: 100%;
+    	padding-top: 4px;
+    	padding-bottom: 4px;
+    	padding-right: 4px;
+    	padding-left: 4px;
+		color: #333333;
+		border-bottom: 1px solid #333333;
+	}
+	.main-head nav a:hover,
+	.main-head .menu-open:hover{
+		background-color: #ec7a5c;
+		color: #ffffff;
+	}
+	.main-head nav a:after{
+		display: none;
+	}
+	.slider-arrow{
+		padding: 20px 20px;
+	}
+	.main_slider-container .slider-item{
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	.slider-over_title{
+		font-size: 20px;
+	}
+	.slider-title{
+		margin: 6px auto 30px;
+		font-size: 40px;
+	}
+	.welcome-container:after{
+		display: none;
+	}
+	.welcome-block{
+		width: 100%;
+		padding-right: 0;
+	}
+	.welcome-title{
+		text-align: center;
+	}
+	.welcome-title:after{
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.services-item{
+		width: 100%;
+	}
+	.counter-item{
+		width: 50%;
+		margin-bottom: 20px;
+	}
+	.portfolio-item{
+		width: 100%;
+	}
+	.portfolio-menu-item{
+		width: 100%;
+	}
+	.soc_links-item{
+		width: 100%;
+	}
+}
+@media screen and (max-width: 700px){
+	.slider-title{
+		font-size: 30px;
+	}
+	.welcome-title,
+	.services-title,
+	.testimonial-title,
+	.portfolio-title{
+		font-size: 26px;
+	}
+	.soc_links-item{
+		padding: 20px 10px;
+	}
+}
