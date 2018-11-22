@@ -1,0 +1,16 @@
+@media screen and (max-width: 720px){
+	.symbol-container{
+		width: 100%;
+	}
+	.panel-block{
+		width: 100%;
+		margin-top: 30px;
+		padding-left: 0;
+	}
+	.panel-status{
+		height: 40px;
+	}
+	.panel-status_text{
+		font-size: 28px;
+	}
+}

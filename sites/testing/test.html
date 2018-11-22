@@ -1,0 +1,54 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Casino</title>
+	<!--<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/media.css">-->
+</head>
+<body>
+
+<textarea id="textField" name="text"></textarea> <br/>
+<input onclick="updateFile(document.getElementById('textField'));" type="button" id="btn" value="Go"/>
+
+<script type="text/javascript">
+"use strict";
+
+function getXMLHttpRequest()
+{
+   if (window.XMLHttpRequest) {
+     return new XMLHttpRequest();
+   }
+   return new ActiveXObject('Microsoft.XMLHTTP');
+}
+var request = getXMLHttpRequest();
+request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+        var responseBody = request.responseText;
+        var data = JSON.parse(responseBody);
+        var arr = data['symbols'].split(';');
+        arr = arr.map(function(item){
+        	return item = JSON.parse(item);
+        });
+        console.log(arr);
+    }
+}
+request.open('GET', 'test.php', true);
+request.send(null);
+
+
+
+/*function updateFile(obj)
+{
+      params = obj.name + '=' + obj.value;
+      request.open('POST', 'test2.php', true);
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      request.send(params);
+}
+request.onreadystatechange = function() {
+      if (request.readyState == 4) {
+            alert(request.responseText);
+      }
+};*/
+</script>
+</body>
