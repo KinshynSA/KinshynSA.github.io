@@ -167,11 +167,12 @@ function scrollImitate(container){
 		parent.append(scrollLine);
 
 
-		scrollItem.style.height = content.parentElement.offsetHeight/content.offsetHeight * 100 + '%';
+		scrollItem.style.height = box.offsetHeight/content.offsetHeight * 100 + '%';
 
 
 		box.onscroll = ()=>{
 			scrollItem.style.top = box.scrollTop/content.offsetHeight * 100 + '%';
+			scrollItem.style.height = box.offsetHeight/content.offsetHeight * 100 + '%';
 		}
 	});
 }
