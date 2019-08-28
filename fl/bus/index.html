@@ -1,0 +1,416 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Автобус</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.min.css">
+	<script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<section class="center-main-block">
+	<section class="trip_search">
+			<h1>Поиск рейсов</h1>
+			<article>
+				<h3>Панель поиска рейсов</h3>
+				<form class="flex-block">
+					<div class="container-input-text">
+						<input type="text" name="search_trip" placeholder="Город отъезда">
+						<i class="fa fa-map-marker"></i>
+					</div>
+					<i class="fa fa-exchange"></i>
+					<div class="container-input-text">
+						<input type="text" name="search_trip" placeholder="Пункт назначения">
+						<i class="fa fa-map-marker"></i>
+					</div>
+					<div class="container-input-date">
+						<i class="fa fa-calendar-check-o"></i>Дата отъезда
+					</div>
+					<div class="container-input-submit">
+						<input type="submit" name="search_trip" value="Найти подходящие рейсы">
+					</div>
+				</form>
+			</article>
+	</section>
+	<section class="trip_choice">
+			<h1>Выбор рейса</h1>
+			<h2>Фильтр панели выбора рейса</h2>
+			<section class="choice_trip flex-block">
+				<div>
+					<h4>Показывать:</h4>
+					<label for="choice_trip_rad1">
+						<input id="choice_trip_rad1" type="radio" name="choice_trip" checked>
+						<div class="check"></div>
+						<span>Все рейсы</span>
+					</label>
+					<label for="choice_trip_rad2">
+						<input id="choice_trip_rad2" type="radio" name="choice_trip">
+						<div class="check"></div>
+						<span>Только прямые</span>
+					</label>
+				</div>
+				<div>
+					<h4>Сортировать по</h4>
+					<select class="blue">
+  						<option>Цене (по убыванию)</option>
+  						<option>Цене (по возрастанию)</option>
+					</select>
+					<i class="fa fa-th-large"></i>
+					<i class="fa fa-reorder"></i>
+				</div>
+			</section>
+			<section class="offers">
+				<h2>Предложения перевозчиков</h2>
+				<div class="line_blue">
+				<section class="offer">
+					<header>
+						<img src="img/logo1.png" alt="" />
+						<h3>Luxury Travel</h3>
+						<a href="#">Посмотреть маршрут на карте</a>
+					</header>
+					<figcaption class="flex-block">
+						<div>
+							<p>Название рейса: <span class="pink">Киев-Харьков</span></p>
+							<p>Код рейса: <span class="pink">2281488</span></p>
+							<p>Расстояние: <span class="pink">214 км</span></p>
+							<p>Время в пути: <span class="pink">6 часов 45 мин</span></p>
+						</div>
+						<div>
+							<p>Станция отправления: <span class="pink">ст. Солнечная</span></p>
+							<p>Станция прибытия: <span class="pink">ст. Вечерняя</span></p>
+							<p>Время прибытия: <span class="pink">27.09.2017 (00:30)</span></p>
+						</div>
+						<div class="offer_price">
+							<h2>300 грн</h2>
+							<span>Стоимость билета</span>
+						</div>
+					</figcaption>
+				</section>
+				</div>
+				<section class="offer">
+					<header>
+						<img src="img/logo1.png" alt="" />
+						<h3>Luxury Travel</h3>
+						<a href="#">Посмотреть маршрут на карте</a>
+					</header>
+					<figcaption class="flex-block">
+						<div>
+							<p>Название рейса: <span class="pink">Киев-Харьков</span></p>
+							<p>Код рейса: <span class="pink">2281488</span></p>
+							<p>Расстояние: <span class="pink">214 км</span></p>
+							<p>Время в пути: <span class="pink">6 часов 45 мин</span></p>
+						</div>
+						<div>
+							<p>Станция отправления: <span class="pink">ст. Солнечная</span></p>
+							<p>Станция прибытия: <span class="pink">ст. Вечерняя</span></p>
+							<p>Время прибытия: <span class="pink">27.09.2017 (00:30)</span></p>
+						</div>
+						<div class="offer_price">
+							<h2>300 грн</h2>
+							<span>Стоимость билета</span>
+						</div>
+					</figcaption>
+				</section>
+				<div class="line_pink">
+				<section class="offer">
+					<header>
+						<img src="img/logo1.png" alt="" />
+						<h3>Luxury Travel</h3>
+						<a href="#">Посмотреть маршрут на карте</a>
+					</header>
+					<figcaption class="flex-block">
+						<div>
+							<p>Название рейса: <span class="pink">Киев-Харьков</span></p>
+							<p>Код рейса: <span class="pink">2281488</span></p>
+							<p>Расстояние: <span class="pink">214 км</span></p>
+							<p>Время в пути: <span class="pink">6 часов 45 мин</span></p>
+						</div>
+						<div>
+							<p>Станция отправления: <span class="pink">ст. Солнечная</span></p>
+							<p>Станция прибытия: <span class="pink">ст. Вечерняя</span></p>
+							<p>Время прибытия: <span class="pink">27.09.2017 (00:30)</span></p>
+						</div>
+						<div class="offer_price">
+							<h2>300 грн</h2>
+							<span>Стоимость билета</span>
+						</div>
+					</figcaption>
+				</section>
+				</div>
+			</section>
+	</section>
+	<section class="trip_buy">
+			<h1>Панель оформления заказа</h1>
+			<section class="offer flex-block">
+				<div class="offer_left">
+					<header>
+						<div class="offer_company">
+							<img src="img/logo1.png" alt="" />
+							<h3>Luxury Travel</h3>
+						</div>
+						<div class="offer_firm_adress dark-blue">
+							<p>808005553535<br>
+							ул. Федора Эрнста, 3-Б<br>
+							email: info@gunsel.com.ua</p>
+						</div>
+					</header>
+					<figcaption class="flex-block">
+						<div>
+							<p>Название рейса: <span class="pink">Киев-Харьков</span></p>
+							<p>Код рейса: <span class="pink">2281488</span></p>
+							<p>Расстояние: <span class="pink">214 км</span></p>
+							<p>Время в пути: <span class="pink">6 часов 45 мин</span></p>
+						</div>
+						<div>
+							<p>Станция отправления: <span class="pink">ст. Солнечная</span></p>
+							<p>Станция прибытия: <span class="pink">ст. Вечерняя</span></p>
+							<p>Время прибытия: <span class="pink">27.09.2017 (00:30)</span></p>
+							<p>Стоимость билета: <span class="bold">300 грн</span></p>
+						</div>
+					</figcaption>
+				</div>
+				<div class="offer_right">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20341.690092029537!2d30.493044361246533!3d50.409218474621206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf37a01e64c9%3A0x7144f78cc24bbd48!2z0JrQuNGX0LLRgdGM0LrQuNC5INCm0LXQvdGC0YDQsNC70YzQvdC40Lkg0JDQstGC0L7QstC-0LrQt9Cw0Ls!5e0!3m2!1sru!2sua!4v1506759769864" width="600" height="450" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</section>
+			<section class="offer_seats">
+				<h4>Выберите места в автобусе</h4>
+				<div class="bus">
+					<div class="bus_driver_t"></div>
+					<div class="bus_driver">
+						<i class="fa fa-circle-o blue"></i>
+					</div>
+					<div class="seats flex-block">
+						<div class="seats_left">
+							<div class="row_1">
+								<figure class="door short">
+									<i class="fa fa-arrow-down blue"></i>
+								</figure>
+								<div class="seat off">32</div>
+								<div class="seat">34</div>
+								<div class="seat">36</div>
+								<div class="seat off">38</div>
+								<div class="seat off">40</div>
+								<div class="seat">42</div>
+								<div class="seat off">44</div>
+								<div class="seat">46</div>
+								<figure class="door long">
+									<i class="fa fa-arrow-down blue"></i>
+								</figure>
+								<div class="seat">48</div>
+								<div class="seat">50</div>
+								<div class="seat off">52</div>
+								<div class="seat off">54</div>
+							</div>
+							<div class="row_2">
+								<div class="seat_null"></div>
+								<div class="seat">31</div>
+								<div class="seat">33</div>
+								<div class="seat off">35</div>
+								<div class="seat off">37</div>
+								<div class="seat">39</div>
+								<div class="seat off">41</div>
+								<div class="seat off">43</div>
+								<div class="seat off">45</div>
+								<div class="seat_null"></div>
+								<div class="seat_null"></div>
+								<div class="seat off">47</div>
+								<div class="seat off">49</div>
+								<div class="seat off">51</div>
+								<div class="seat off">53</div>
+							</div>
+							<div class="channel"></div>
+							<div class="row_3">
+								<div class="seat">2</div>
+								<div class="seat">4</div>
+								<div class="seat off">6</div>
+								<div class="seat">8</div>
+								<div class="seat active">10</div>
+								<div class="seat active">12</div>
+								<div class="seat active">14</div>
+								<div class="seat off">16</div>
+								<div class="seat">18</div>
+								<div class="seat">20</div>
+								<div class="seat">22</div>
+								<div class="seat">24</div>
+								<div class="seat active">26</div>
+								<div class="seat active">28</div>
+								<div class="seat active">30</div>
+							</div>
+							<div class="row_4">
+								<div class="seat">1</div>
+								<div class="seat">3</div>
+								<div class="seat">5</div>
+								<div class="seat off">7</div>
+								<div class="seat">9</div>
+								<div class="seat">11</div>
+								<div class="seat">13</div>
+								<div class="seat">15</div>
+								<div class="seat">17</div>
+								<div class="seat">19</div>
+								<div class="seat">21</div>
+								<div class="seat">23</div>
+								<div class="seat">25</div>
+								<div class="seat">27</div>
+								<div class="seat">29</div>
+							</div>
+						</div>
+						<div class="row_last">
+							<div class="seat">59</div>
+							<div class="seat">58</div>
+							<div class="seat">57</div>
+							<div class="seat">56</div>
+							<div class="seat">55</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</section>
+	<section class="passenger_data">
+			<h4>Данные Пассажира</h4>
+			<form class="flex-block">
+				<input type="text" name="passenger_1" placeholder="Ваше имя" required>
+				<input type="text" name="passenger_1" placeholder="Ваша фамилия" required>
+				<input type="tel" name="passenger_1" placeholder="Ваш телефон" required>
+			</form>
+			<form class="flex-block">
+				<input type="text" name="passenger_2" placeholder="Ваше имя" required>
+				<input type="text" name="passenger_2" placeholder="Ваша фамилия" required>
+				<input type="tel" name="passenger_2" placeholder="Ваш телефон" required>
+			</form>
+	</section>
+	<section class="client_data">
+			<h4>Данные Клиента</h4>
+			<form class="flex-block">
+				<input type="text" name="client_1" placeholder="Ваше имя" required>
+				<input type="text" name="client_1" placeholder="Ваша фамилия" required>
+				<input type="tel" name="client_1" placeholder="Ваш телефон" required>
+				<input type="tel" name="client_1" placeholder="Ваш Email" required>
+				<input type="submit" name="client_1" value="Перейти к оплате">
+			</form>
+	</section>
+	<section class="trip_order">
+			<h1>Панель предзаказа</h1>
+			<h4>Данные предзаказа</h4>
+			<section class="pre-order flex-block">
+				<div>
+					<p>Код рейса: <span class="pink">2281488</span></p>
+					<p>Время отправки: <span class="pink">27.09.2017 (00:10)</span></p>
+					<p>Станция отправления: <span class="pink">ст. Солнечная</span></p>
+					<p>Расстояние: <span class="pink">214 км</span></p>
+				</div>
+				<div>
+					<p>Название рейса: <span class="pink">Киев-Харьков</span></p>
+					<p>Время отправки: <span class="pink">27.09.2017 (00:30)</span></p>
+					<p>Станция прибытия: <span class="pink">ст. Вечерняя</span></p>
+					<p>Стоимость билета: <span class="bold">300 грн</span></p>
+				</div>
+				<div>
+					<div class="flex-block">
+						<p><span class="blue bold">Место #3</span> Евгения Молчанов</p><p>88005553535</p><p>Стоимость билета 300 грн</p>
+					</div>
+					<div class="flex-block">
+						<p><span class="blue bold">Место #3</span> Евгения Молчанов</p><p>88005553535</p><p>Стоимость билета 300 грн</p>
+					</div>
+					<div class="flex-block">
+						<p><span class="blue bold">Место #3</span> Евгения Молчанов</p><p>88005553535</p><p>Стоимость билета 300 грн</p>
+					</div>
+					<div class="flex-block">
+						<p><span class="blue bold">Место #3</span> Евгения Молчанов</p><p>88005553535</p><p>Стоимость билета 300 грн</p>
+					</div>
+				</div>
+			</section>
+			<section class="pre_order_buy flex-block">
+				<p class="bold">Всего к оплате: 1200 грн</p>
+				<form>
+					<input type="email" name="pre-order" placeholder="E-mail">
+					<input type="reset" name="pre-order" value="Отменить заказ">
+					<button>Изменить</button>
+				</form>
+				<div class="timer">
+					<span class="blue">Оплатить</span>
+					<span class="clock">0</span>
+					<span class="clock">3</span>
+					<span class="clock_l">:</span>
+					<span class="clock">5</span>
+					<span class="clock">9</span>
+				</div>
+			</section>
+	</section>
+	<section class="trip_ticket line_pink">
+		<h1>Билет</h1>
+		<section class="ticket">
+			<header class="flex-block">
+				<div>
+					<span>Перевозчик:</span>
+					<h3>Luxury Travel</h3>
+				</div>
+				<div>
+					<span>Билет #</span>
+					<h4>482041</h4>
+				</div>
+			</header>
+			<div class="ticket_passenger flex-block">
+				<div>
+					<span>Пассажир:</span>
+					<h4>Евгения Аронов</h4>
+				</div>
+				<div>
+					<span>Маршрут:</span>
+					<h4>669 Киев-Харьков</h4>
+				</div>
+				<div>
+					<span>Цена:</span>
+					<h4>300 грн</h4>
+				</div>
+			</div>
+			<figcaption>
+				<h2>Информация про поездку</h2>
+				<div class="info_s flex-block">
+					<span> </span>
+					<span>Город</span>
+					<span>Дата</span>
+					<span>Время</span>
+					<span>Место</span>
+				</div>
+				<div class="info_p flex-block">
+					<div>
+						<span>Отправление из:</span><br>
+						<span>Прибытие в:</span>
+					</div>
+					<div>
+						<p>Киев</p>
+						<p>Харьков</p>
+					</div>
+					<div>
+						<p>03/09/2017</p>
+						<p>04/09/2017</p>
+					</div>
+					<div>
+						<p>22:45:00</p>
+						<p>22:45:00*</p>
+					</div>
+					<div class="info_t">
+						<p>33</p>	
+					</div>
+				</div>
+			</figcaption>
+			<div class="rules">
+				<p>Билет дает право на посадку непосредственно в автобус</p>
+				<h2>Условия возвращения билета:</h2>
+				<ol class="dark-blue">
+					<li>Сервисный центр за оформление интернет билета и сборы платежных систем не возвращаюются</li>
+					<li>Более суток до отправления автобуса - 100% от тарифа</li>
+					<li>За два часа до отправления автобуса - 90% от тарифа</li>
+					<li>За 10 минут до отправления автобуса - 80% от тарифа</li>
+					<li>Позднее 10 минут, но не более трех часов с момента отправления - 70% от тарифа</li>
+				</ol>
+				<span>*Время прибытия указанно приблизительно</span>
+			</div>
+		</section>
+	</section>
+</section>
+</body>
+</html>
