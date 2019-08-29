@@ -47,7 +47,7 @@
 								<span>07.08.19</span>
 							</div>
 						</div>
-						<div class="desription_descr">Текст</div>
+						<div class="desription_descr" contenteditable="true">Текст</div>
 					</div>
 					<div class="description_add">
 						<figure class="description_butt">
@@ -61,7 +61,8 @@
 					</div>
 				</div>
 				<div class="description_alert">
-					<span class="description_alert_text">Перевірте, будь-ласка, корректність введених даних!</span>
+					<span class="description_alert_text description_alert_text-fill">*Заповніть дані про квитки</span>
+					<span class="description_alert_text description_alert_text-check hidden">Перевірте, будь-ласка, корректність введених даних!</span>
 				</div>
 			</div>
 		</section>
@@ -84,14 +85,14 @@
 						<label class="customer_label">ПІБ гостя:</label>
 						<div class="customer_flex">
 							<img class="customer_image" src="img/face.png" alt="" />
-							<input class="customer_input" type="text" placeholder="Пупкін Василь Васильович">
+							<input class="customer_input" type="text" placeholder="Пупкін Василь Васильович" required>
 						</div>
 					</div>
 					<div class="customer_input-block customer_input-block-phone">
 						<label class="customer_label">Телефон гостя:</label>
 						<div class="customer_flex">
 							<img class="customer_image" src="img/phone.png" alt="" />
-							<input class="customer_input" type="tel" placeholder="+380 97 075 76 38">
+							<input class="customer_input" type="tel" placeholder="+380 97 075 76 38" required>
 						</div>
 					</div>
 					<div class="customer_price">
@@ -116,14 +117,14 @@
 						<label class="customer_label">ПІБ гостя:</label>
 						<div class="customer_flex">
 							<img class="customer_image" src="img/face.png" alt="" />
-							<input class="customer_input" type="text" placeholder="Пупкін Василь Васильович">
+							<input class="customer_input" type="text" placeholder="Пупкін Василь Васильович" required>
 						</div>
 					</div>
 					<div class="customer_input-block customer_input-block-phone">
 						<label class="customer_label">Телефон гостя:</label>
 						<div class="customer_flex">
 							<img class="customer_image" src="img/phone.png" alt="" />
-							<input class="customer_input" type="tel" placeholder="+380 97 075 76 38">
+							<input class="customer_input" type="tel" placeholder="+380 97 075 76 38" required>
 						</div>
 					</div>
 					<div class="customer_price">
@@ -148,14 +149,14 @@
 						<label class="customer_label">ПІБ гостя:</label>
 						<div class="customer_flex">
 							<img class="customer_image" src="img/face.png" alt="" />
-							<input class="customer_input" type="text" placeholder="Пупкін Василь Васильович">
+							<input class="customer_input" type="text" placeholder="Пупкін Василь Васильович" required>
 						</div>
 					</div>
 					<div class="customer_input-block customer_input-block-phone">
 						<label class="customer_label">Телефон гостя:</label>
 						<div class="customer_flex">
 							<img class="customer_image" src="img/phone.png" alt="" />
-							<input class="customer_input" type="tel" placeholder="+380 97 075 76 38">
+							<input class="customer_input" type="tel" placeholder="+380 97 075 76 38" required>
 						</div>
 					</div>
 					<div class="customer_price">
@@ -170,8 +171,9 @@
 		<section class="main-section main-buttons">
 			<div class="center-main-block">
 				<div class="main-buttons_flex">
-					<a class="main-button main-button-gray">Редагувати</a>
-					<a class="main-button">Підтвердити</a>
+					<a class="main-button main-button-redact main-button-gray hooded">Редагувати</a>
+					<a class="main-button main-button-go hidden">Підтвердити</a>
+					<a class="main-button main-button-done" onclick="ticketsConfirm(event);">Готово</a>
 				</div>
 			</div>
 		</section>

@@ -61,6 +61,16 @@ input:focus{
 }
 
 
+.hooded{
+	opacity: 0!important;
+	width: 0!important;
+	height: 0!important;
+	transition: all 0.2s ease-in-out;
+}
+.hidden{
+	display: none!important;
+}
+
 .main{
 	max-width: 1170px;
 	margin: 0 auto;
@@ -137,6 +147,8 @@ input:focus{
 	background-color: #ffffff;
 	font-size: 14px;
 	border-radius: 10px;
+	height: 135px;
+	overflow-y: auto;
 }
 .description_add{
 	margin-left: 30px;
@@ -251,18 +263,23 @@ input:focus{
 	margin-right: -6px;
 }
 .customer_input{
-	width: 242px;
-	height: 41px;
+	width: 240px;
+	height: 39px;
 	background-color: #f8f8f8;
 	color: #171717;
 	font-size: 18px;
-	line-height: 41px;
+	line-height: 39px;
 	border-radius: 12px;
 	text-align: center;
+	border: 1px solid #f8f8f8;
+	transition: all 0.2s ease-in-out;
 }
 .customer_input::placeholder{
 	color: rgba(23,23,23,0.32);
 	text-decoration: underline;
+}
+.customer_input.invalid{
+	border-color: #DD0000;
 }
 .customer_input-block .select{
 	position: relative;
@@ -512,9 +529,6 @@ input:focus{
 	.description_icons{
 		margin-right: 0;
 		margin-bottom: 10px;
-	}
-	.desription_descr{
-		min-height: 160px;
 	}
 	.description_add{
 		margin-left: 0;
