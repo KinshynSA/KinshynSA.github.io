@@ -520,7 +520,9 @@ input:focus{
 	line-height: 1;
 	border-radius: 24px;
 }
-.sresult_sidebar_search input::placeholder{}
+.sresult_sidebar_search input::placeholder{
+	color: rgba(23,23,23,0.32);
+}
 .sresult_sidebar_block{
 	margin-bottom: 16px;
 }
