@@ -1,30 +1,33 @@
 "use strict";
 
 window.onload = ()=>{
-
 	document.addEventListener('click', function(event){
-		let target = event.target;
+		if(event.target.closest('.customer_close')) event.target.closest('.customer').remove();
 
-		if(target.classList.contains('customer_close'))	target.closest('.customer').remove();
+		if(event.target.closest('.sresult_sidebar_label')) event.target.closest('.sresult_sidebar_label').nextElementSibling.classList.toggle('active');
+
+		if(event.target.closest('.sresult_sidebar_item')){
+			event.target.closest('.sresult_sidebar_block').querySelector('.sresult_sidebar_choice').textContent = event.target.closest('.sresult_sidebar_item').textContent;
+			event.target.closest('.sresult_sidebar_list').classList.remove('active');
+		};
+
+		if(event.target.closest('.sresult_sidebar_more')) event.target.closest('.sresult_sidebar_more').classList.add('hidden');
+		if(event.target.closest('.sresult_sidebar_less')) event.target.closest('.sresult_sidebar_list').querySelector('.sresult_sidebar_more').classList.remove('hidden');
 	});
 
 	document.addEventListener('keydown', function(event){
-		let target = event.target;
-
-		if(target.tagName.toLowerCase() == 'input' && target.type == 'tel'){
+		if(event.target.tagName.toLowerCase() == 'input' && event.target.type == 'tel'){
 		    let keycode = event.keyCode;
 		    if ((44 < keycode && keycode < 58)||(keycode == 187)||(keycode == 8)||(keycode == 37)||(keycode == 39)){} else {
 		    	event.preventDefault();
 		    };			
 		};
 
-		if(target.tagName.toLowerCase() == 'input' && target.classList.contains('invalid')) checkInput(target);
+		if(event.target.tagName.toLowerCase() == 'input' && event.target.classList.contains('invalid')) checkInput(event.target);
 	});
 
 	document.addEventListener('change', function(event){
-		let target = event.target;
-
-		if(target.tagName.toLowerCase() == 'input') checkInput(target);
+		if(event.target.tagName.toLowerCase() == 'input') checkInput(event.target);
 	});
 
 	document.querySelectorAll('.select-emulator').forEach((select)=>emulateSelector(select));
