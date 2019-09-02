@@ -30,7 +30,11 @@ window.onload = ()=>{
 		if(event.target.tagName.toLowerCase() == 'input') checkInput(event.target);
 	});
 
-	document.querySelectorAll('.select-emulator').forEach((select)=>emulateSelector(select));
+	document.querySelectorAll('.select-emulator').forEach((select) => emulateSelector(select));
+	document.querySelectorAll('.calendar-box-big').forEach((item) => calendar.prepareCalendar({
+		box:item,
+		eventsCalendar:eventsCalendar
+	}));	
 };
 
 
@@ -61,8 +65,15 @@ function emulateSelector(select){
 		emulList.append(option);
 	});
 
-
 	select.parentNode.append(emul);
+
+	let heightStart = emul.querySelector('.select_option').offsetHeight;
+	let heightEnd = 0;
+	emul.querySelectorAll('.select_option').forEach((option)=>{
+		heightEnd += option.offsetHeight;
+	});
+	emul.style.height = heightStart + 'px';
+	emul.querySelector('.select_list').style.maxHeight = heightStart + 'px';
 };
 
 
@@ -97,3 +108,199 @@ function checkInput(input){
 
 	return true;
 };
+
+
+
+	class Calendar{
+		constructor(){}
+
+		dayName = ['ПН','ВТ','СР','ЧТ','ПТ','СБ','НД']
+
+		monthName = ['Січень','Лютий','Березень','Квітень','Травень','Червень','Липень','Серпень','Вересень','Жовтень','Листопад','Грудень']
+
+		date = new Date()
+
+		prepareCalendar(parametrs){
+			this.box = parametrs.box;
+			if(parametrs.eventsCalendar) this.eventsCalendar = JSON.parse(parametrs.eventsCalendar);
+			this.createCalendar();
+		}
+
+		createCalendar(){
+			this.cleanBox();
+			this.createPanel();
+			this.createTable(); 
+		}
+
+		cleanBox(){
+			this.box.innerHTML = '';
+		}
+
+		createPanel(){
+			let panel = document.createElement('div');
+			panel.classList = 'calendar-panel';
+
+			let yearLeft = document.createElement('div');
+			yearLeft.classList = 'calendar-button-year';
+			yearLeft.innerHTML = `<i class="fa fa-angle-double-left"></i> <span class="calendar-button-text">${this.date.getFullYear() - 1}</span>`;
+			yearLeft.onclick = ()=>{
+				this.date = new Date(this.date.getFullYear() - 1, this.date.getMonth());
+				this.createCalendar();
+			}
+
+			let yearRight = document.createElement('div');
+			yearRight.classList = 'calendar-button-year';
+			yearRight.innerHTML = `<span class="calendar-button-text">${this.date.getFullYear() + 1}</span> <i class="fa fa-angle-double-right"></i>`;
+			yearRight.onclick = ()=>{
+				this.date = new Date(this.date.getFullYear() + 1, this.date.getMonth());
+				this.createCalendar();
+			}
+
+			let monthLeft = document.createElement('div');
+			monthLeft.classList = 'calendar-button-month';
+			let dL = this.date.getMonth() - 1;
+			if (dL<0) dL = 11;
+			monthLeft.innerHTML = `<i class="fa fa-angle-left"></i> <span class="calendar-button-text">${this.monthName[dL].slice(0,3)}</span>`;
+			monthLeft.onclick = ()=>{
+				this.date = new Date(this.date.getFullYear(),this.date.getMonth() - 1);
+				this.createCalendar();
+			}
+
+			let monthRight = document.createElement('div');
+			monthRight.classList = 'calendar-button-month';
+			let dR = this.date.getMonth() + 1;
+			if (dR>11) dR = 0;
+			monthRight.innerHTML = `<span class="calendar-button-text">${this.monthName[dR].slice(0,3)}</span> <i class="fa fa-angle-right"></i>`;
+			monthRight.onclick = ()=>{
+				this.date = new Date(this.date.getFullYear(),this.date.getMonth() + 1);
+				this.createCalendar();
+			}
+
+			let dateActual = document.createElement('div');
+			dateActual.classList = 'calendar-date-actual';
+			dateActual.innerHTML = `<i class="fa fa-calendar"></i><span>${this.monthName[this.date.getMonth()]}</span><span>${this.date.getFullYear()}</span>`;
+
+			panel.append(yearLeft);
+			panel.append(monthLeft);
+			panel.append(dateActual);
+			panel.append(monthRight);
+			panel.append(yearRight);
+			this.box.append(panel);
+		}
+
+		createTable(){
+			this.createCalendarHeader();
+			this.createCalendarBody();
+			if(this.eventsCalendar) this.createEvents();
+		}
+
+		createCalendarHeader(){
+			let headerContainer = document.createElement('div');
+			headerContainer.classList = 'calendar-header_container';
+
+			this.dayName.forEach((item=>{
+				let headerItem = document.createElement('div');
+				headerItem.classList = 'calendar-header_item';
+				headerItem.innerHTML = `<span class="calendar-header_item_text">${item}</span>`;
+				headerContainer.append(headerItem);
+			}));
+
+			this.box.append(headerContainer);
+		}
+
+		createCalendarBody(){
+			let bodyContainer = document.createElement('div');
+			bodyContainer.classList = 'calendar-body_container';
+
+			let date = this.date;
+			let year = date.getFullYear();
+			let month = date.getMonth();
+			if(month<10) month = +`0${month}`;
+			let firstDay = new Date(year,month,1).getDay();
+
+			for(let i=0; i < firstDay; i++){
+				let bodyItem = document.createElement('div');
+				bodyItem.classList = 'calendar-body_item empty';
+
+				let bodyItemLabel = document.createElement('span');
+				bodyItemLabel.classList = 'calendar-body_item_label';
+
+				bodyItem.append(bodyItemLabel);
+				bodyContainer.append(bodyItem);				
+			}
+			
+			for(let i=1; i <= new Date(year,month + 1, 0).getDate();i++){
+				let bodyItem = document.createElement('div');
+				bodyItem.classList = 'calendar-body_item';
+
+				let bodyItemLabel = document.createElement('span');
+				bodyItemLabel.classList = 'calendar-body_item_label';
+				bodyItemLabel.textContent = `${i}`;
+				let day = i;
+				if(day<10) day = `0${day}`;
+				bodyItemLabel.dataset.data = `${year}-${month}-${day}`;
+
+				let bodyItemBlock = document.createElement('div');
+				bodyItemBlock.classList = 'calendar-body_item_block';
+
+				bodyItem.append(bodyItemLabel);
+				bodyItem.append(bodyItemBlock);
+				bodyContainer.append(bodyItem);
+			}
+
+			this.box.append(bodyContainer);
+		}
+
+		createEvents(){
+			//console.log(this.eventsCalendar);
+			this.eventsCalendar.forEach((eventItem,i)=>{
+				let eventDate = eventItem.date.split('-');
+				if(eventDate[0]==this.date.getFullYear()&&eventDate[1]==this.date.getMonth()+1){
+					let item = this.box.querySelectorAll('.calendar-body_item:not(.empty)')[+eventDate[2] - 1];
+
+					let eventBox = document.createElement('div');
+					eventBox.classList = 'calendar-event_box';
+
+					
+					eventBox.onmouseover = ()=>positionDescription(eventBox);
+					eventBox.onclick = function(event){
+						if(document.documentElement.clientWidth <= 1000){
+							this.classList.toggle('active');							
+						}
+					};
+					
+
+					let eventTitle = document.createElement('div');
+					eventTitle.classList = 'calendar-event_title';
+					eventTitle.innerHTML = `<span class="calendar-event_name">${eventItem.name}</span> <span class="calendar-event_time">${eventItem.timeStart}</span>`;
+
+					let eventDescription = document.createElement('div');
+					eventDescription.classList ='calendar-event_description';
+					eventDescription.innerHTML = `<figure class="calendar-event_image"><img src="${eventItem.img}" alt="" /></figure><div class="calendar-event_caption"><span class="calendar-event_top">${eventItem.name}</span><span class="calendar-event_text">${eventItem.description}</span><span class="calendar-event_date">${this.monthName[(eventDate[1] - 1)].slice(0,3)} ${eventDate[2]} - ${eventItem.timeStart}-${eventItem.timeEnd}</span></div>`;
+
+					eventBox.append(eventTitle);
+					eventBox.append(eventDescription);
+					item.querySelector('.calendar-body_item_block').append(eventBox);
+
+
+					function positionDescription(box){
+						if(document.documentElement.clientWidth > 1000){
+							box.classList.add('active')
+							let descr = box.querySelector('.calendar-event_description');
+
+							if((box.offsetLeft + box.offsetWidth + 240) >= document.documentElement.clientWidth){
+								descr.style.left = 'auto';
+								descr.style.right = 'calc(100% + 8px)';
+							} else {
+								descr.style.left = null;
+								descr.style.right = null;
+							}
+
+							box.onmouseout = function(event){this.classList.remove('active')};
+						}
+					}
+				}
+			});
+		}
+	}
+	let calendar = new Calendar();
