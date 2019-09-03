@@ -13,6 +13,34 @@ window.onload = ()=>{
 
 		if(event.target.closest('.sresult_sidebar_more')) event.target.closest('.sresult_sidebar_more').classList.add('hidden');
 		if(event.target.closest('.sresult_sidebar_less')) event.target.closest('.sresult_sidebar_list').querySelector('.sresult_sidebar_more').classList.remove('hidden');
+
+		if(event.target.closest('.search_item-location')){
+			let box = event.target.closest('.search_item-location');
+			box.querySelector('.select').classList.add('active');
+
+			if(event.target.closest('.select_option')){
+				box.querySelector('.search_field').value = event.target.closest('.select_option').textContent;
+				box.querySelector('.select').classList.remove('active');
+			}
+		};
+
+		if(event.target.closest('.search_item-date')){
+			if(!event.target.closest('.search_item-date').classList.contains('active')){
+				let box = document.createElement('div');
+				box.classList = 'search_item-calendar';
+				event.target.closest('.search_item-date').append(box);
+				calendar.prepareCalendar({box:box});
+				event.target.closest('.search_item-date').classList.add('active');					
+			}
+
+			if(event.target.closest('.calendar-body_item_label')){
+				let v = event.target.closest('.calendar-body_item_label').dataset.data;
+				v = v.split('-').join('/');
+				event.target.closest('.search_item-date').querySelector('.search_field').value = v;
+				event.target.closest('.search_item-date').classList.remove('active');
+				event.target.closest('.search_item-date').querySelector('.search_item-calendar').remove();
+			}
+		}
 	});
 
 	document.addEventListener('keydown', function(event){
