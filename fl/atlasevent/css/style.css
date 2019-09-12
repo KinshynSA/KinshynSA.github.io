@@ -592,31 +592,42 @@ input:focus{
 	max-height: 10000px;
 	margin-top: 8px;
 	opacity: 1;
-	box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
 	transform: translateY(0);
 	transition: opacity 0.6s ease-in-out, max-height 0.1s linear;
 }
-.sresult_sidebar_list li{
-	display: block;
+.sresult_sidebar_item{
+	display: flex;
+	align-items: center;
 	padding: 4px 6px;
 	list-style: none;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 }
-.sresult_sidebar_list li:hover{
+.sresult_sidebar_item:hover{
 	background-color: #f0f0f0;
 }
-.sresult_sidebar_more{
-	color: var(--color1);
-}
-.sresult_sidebar_more~li{
+.sresult_sidebar_item input{
 	display: none;
 }
-.sresult_sidebar_more.hidden~li{
-	display: block;
+.sresult_sidebar_item input+.sresult_sidebar_text:before{
+	content: "\f00c";
+	display: inline-block;
+	margin: 0.05em 0;
+	width: calc(1.1em - 4px);
+	height: calc(1.1em - 4px);
+	margin-right: 6px;
+	color: transparent;
+	font-family: "FontAwesome";
+	line-height: 0.8em;
+	border-radius: 50%;
+	border: 1px solid #d2d2d2;
 }
-.sresult_sidebar_less{
-	color: var(--color1);
+.sresult_sidebar_item input[type=checkbox]+.sresult_sidebar_text:before{
+	border-radius: 2px;
+}
+.sresult_sidebar_item input:checked+.sresult_sidebar_text:before{
+	color: inherit;
+	transition: all 0.2s ease-in-out;
 }
 
 
@@ -624,7 +635,6 @@ input:focus{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 100%;
 	width: calc(100% - 340px);
 }
 .sresult_blocks{}
@@ -1619,11 +1629,6 @@ input:focus{
 	.sresult_sidebar_block{
 		position: relative;
 		width: 49%;
-	}
-	.sresult_sidebar_list{
-		position: absolute;
-		z-index: 20;
-		width: 100%;
 	}
 	.sresult_box{
 		width: 100%;

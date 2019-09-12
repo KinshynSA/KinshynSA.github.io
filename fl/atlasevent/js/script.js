@@ -4,15 +4,7 @@ window.onload = ()=>{
 	document.addEventListener('click', function(event){
 		if(event.target.closest('.customer_close')) event.target.closest('.customer').remove();
 
-		if(event.target.closest('.sresult_sidebar_label')) event.target.closest('.sresult_sidebar_label').nextElementSibling.classList.toggle('active');
-
-		if(event.target.closest('.sresult_sidebar_item')){
-			event.target.closest('.sresult_sidebar_block').querySelector('.sresult_sidebar_choice').textContent = event.target.closest('.sresult_sidebar_item').textContent;
-			event.target.closest('.sresult_sidebar_list').classList.remove('active');
-		};
-
-		if(event.target.closest('.sresult_sidebar_more')) event.target.closest('.sresult_sidebar_more').classList.add('hidden');
-		if(event.target.closest('.sresult_sidebar_less')) event.target.closest('.sresult_sidebar_list').querySelector('.sresult_sidebar_more').classList.remove('hidden');
+		if(event.target.closest('.sresult_sidebar_label'))event.target.closest('.sresult_sidebar_label').nextElementSibling.classList.toggle('active');
 
 		if(event.target.closest('.search_item-location')){
 			let box = event.target.closest('.search_item-location');

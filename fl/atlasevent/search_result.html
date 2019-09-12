@@ -24,53 +24,104 @@
 					</div>
 				</div>
 				<aside class="sresult_sidebar">
-					<div class="sresult_sidebar_search">
+					<form class="sresult_sidebar_search">
 						<input type="text" placeholder="Введіть назву події">
+					</form>
+					<div class="sresult_sidebar_block">
+						<label class="sresult_sidebar_label">Дата</label>
+						<div class="sresult_sidebar_list">
+							<label class="sresult_sidebar_item">
+								<input type="radio" name="sresult_date">
+								<span class="sresult_sidebar_text">Всі майбутні</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="radio" name="sresult_date">
+								<span class="sresult_sidebar_text">Сьогодні</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="radio" name="sresult_date">
+								<span class="sresult_sidebar_text">Завтра</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="radio" name="sresult_date">
+								<span class="sresult_sidebar_text">Наступні 7 днів</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="radio" name="sresult_date">
+								<span class="sresult_sidebar_text">Наступні 30 днів</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="radio" name="sresult_date">
+								<span class="sresult_sidebar_text">Наступні 3 місяці</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="radio" name="sresult_date">
+								<span class="sresult_sidebar_text">Всі минулі</span>
+							</label>
+						</div>
 					</div>
 					<div class="sresult_sidebar_block">
-						<label class="sresult_sidebar_label">Дата <span class="sresult_sidebar_choice">Будь-яка</span></label>
-						<ul class="sresult_sidebar_list">
-							<li class="sresult_sidebar_item">Всі майбутні</li>
-							<li class="sresult_sidebar_item">Сьогодні</li>
-							<li class="sresult_sidebar_item">Завтра</li>
-							<li class="sresult_sidebar_item">Наступні 7 днів</li>
-							<li class="sresult_sidebar_item">Наступні 30 днів</li>
-							<li class="sresult_sidebar_item">Наступні 3 місяці</li>
-							<li class="sresult_sidebar_item">Всі минулі</li>
-						</ul>
+						<label class="sresult_sidebar_label">Країна</label>
+						<div class="sresult_sidebar_list">
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_country">
+								<span class="sresult_sidebar_text">Україна</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_country">
+								<span class="sresult_sidebar_text">Польша</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_country">
+								<span class="sresult_sidebar_text">Молдова</span>
+							</label>
+						</div>
 					</div>
 					<div class="sresult_sidebar_block">
-						<label class="sresult_sidebar_label">Країна <span class="sresult_sidebar_choice">Будь-яка</span></label>
-						<ul class="sresult_sidebar_list">
-							<li class="sresult_sidebar_item">Україна</li>
-							<li class="sresult_sidebar_item">Польша</li>
-							<li class="sresult_sidebar_more">Більше...</li>
-							<li class="sresult_sidebar_item">Молдова</li>
-							<li class="sresult_sidebar_less">Менше...</li>
-						</ul>
+						<label class="sresult_sidebar_label">Місто</label>
+						<div class="sresult_sidebar_list">
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_city">
+								<span class="sresult_sidebar_text">Київ</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_city">
+								<span class="sresult_sidebar_text">Полтава</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_city">
+								<span class="sresult_sidebar_text">Івано-Франківськ</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_city">
+								<span class="sresult_sidebar_text">Львів</span>
+							</label>
+						</div>
 					</div>
 					<div class="sresult_sidebar_block">
-						<label class="sresult_sidebar_label">Місто <span class="sresult_sidebar_choice">Будь-яке</span></label>
-						<ul class="sresult_sidebar_list">
-							<li class="sresult_sidebar_item">Київ</li>
-							<li class="sresult_sidebar_item">Полтава</li>
-							<li class="sresult_sidebar_more">Більше...</li>
-							<li class="sresult_sidebar_item">Івано-Франківськ</li>
-							<li class="sresult_sidebar_item">Львів</li>
-							<li class="sresult_sidebar_less">Менше...</li>
-						</ul>
-					</div>
-					<div class="sresult_sidebar_block">
-						<label class="sresult_sidebar_label">Тема <span class="sresult_sidebar_choice">Будь-яка</span></label>
-						<ul class="sresult_sidebar_list">
-							<li class="sresult_sidebar_item">IT, Mobile, E-commerce</li>
-							<li class="sresult_sidebar_item">Бізнес</li>
-							<li class="sresult_sidebar_item">Музика, Танці</li>
-							<li class="sresult_sidebar_more">Більше...</li>
-							<li class="sresult_sidebar_item">Кіно, Театр, ТВ</li>
-							<li class="sresult_sidebar_item">Медицина, Здоров'я</li>
-							<li class="sresult_sidebar_less">Менше...</li>
-						</ul>
+						<label class="sresult_sidebar_label">Тема</label>
+						<div class="sresult_sidebar_list">
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_theme">
+								<span class="sresult_sidebar_text">IT, Mobile, E-commerce</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_theme">
+								<span class="sresult_sidebar_text">Бізнес</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_theme">
+								<span class="sresult_sidebar_text">Музика, Танці</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_theme">
+								<span class="sresult_sidebar_text">Кіно, Театр, ТВ</span>
+							</label>
+							<label class="sresult_sidebar_item">
+								<input type="checkbox" name="sresult_theme">
+								<span class="sresult_sidebar_text">Медицина, Здоров'я</span>
+							</label>
+						</div>
 					</div>
 				</aside>
 				<div class="sresult_box">
