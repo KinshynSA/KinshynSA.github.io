@@ -277,6 +277,7 @@ input:focus{
 	position: relative;
 	z-index: 20;
 	width: auto;
+	height: 45px;
 	min-width: auto;
 	margin-right: -6px;
 }
@@ -349,10 +350,14 @@ input:focus{
 	background-color: #ffffff;
 }
 .customer_input-block-name .customer_image{
+	height: 45px;
 	margin-right: -13px;
 }
 .customer_input-block-name .customer_input{
 	width: 262px;
+}
+.customer_input-block-phone .customer_image{
+	height: 40px;
 }
 .customer_price{
 	display: flex;
@@ -1387,6 +1392,183 @@ input:focus{
 }
 
 
+.pform{
+	position: relative;
+	width: 100%;
+	max-width: 620px;
+	padding: 25px 10px;
+	margin: 50px auto;
+	background-color: #ededed;
+	background-image: linear-gradient(to bottom, #ededed, #f6f6f6);
+	text-align: center;
+	box-shadow: 0 0 21px rgba(0,0,0,0.2);
+}
+.pform_close{
+	position: absolute;
+	top: 10px;
+	right: 14px;
+	z-index: 10;
+	display: block;
+	width: 34px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+.pform_close:hover{
+	opacity: 0.8;
+    transform: scale(1.1);
+}
+.pfrom_title{
+	position: relative;
+	display: inline-block;
+	height: 50px;
+	min-width: 220px;
+	max-width: calc(100% - 40px);
+	padding: 10px;
+	margin-bottom: 20px;
+	background-color: var(--color1);
+	color: #ffffff;
+	font-size: 24px;
+	line-height: 30px;
+}
+.pfrom_title:before{
+	content: "";
+	position: absolute;
+	left: -20px;
+	bottom: 0;
+	z-index: 10;
+	display: block;
+	width: 0;
+	height: 0;
+	border-bottom: 50px solid var(--color1); 
+	border-left: 20px solid transparent;
+}
+.pfrom_title:after{
+	content: "";
+	position: absolute;
+	right: -20px;
+	bottom: 0;
+	z-index: 10;
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 50px solid var(--color1); 
+	border-right: 20px solid transparent;
+}
+.pfrom_title_text{}
+.pform_input_block{
+	position: relative;
+	width: 100%;
+	max-width: 500px;
+	margin: 20px auto;
+	padding-left: 50px;
+}
+.pform_input_image{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	z-index: 10;
+	transform: translateY(-50%);
+}
+.pform_input_block-name .pform_input_image{
+	width: 70px;
+}
+.pform_input_block-phone .pform_input_image{
+	width: 67px;
+}
+.pform_input_block-email .pform_input_image{
+	width: 82px;
+}
+.pform_input{
+	width: 100%;
+	height: 60px;
+	padding: 16px 10px;
+	background-color: #ffffff;
+	font-size: 23px;
+	line-height: 28px;
+	text-align: center;
+	border-radius: 30px;
+}
+.pform_agree{
+	margin: 15px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+}
+/*.pform_agree:hover img{
+	opacity: 0.4;
+}*/
+.pform_agree_checkbox{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 46px;
+	height: 46px;
+	margin-right: 16px;
+	border-radius: 11px;
+	border: 2px solid #0f0f0f;
+	cursor: pointer;
+}
+.pform_agree_checkbox input[type=checkbox]{
+	display: none;
+}
+.pform_agree_checkbox img{
+	display: block;
+	opacity: 0;
+	transition: all 0.4s ease-in-out;
+}
+.pform_agree_checkbox input[type=checkbox]:checked~img{
+	opacity: 1;
+}
+.pform_agree_text{
+	cursor: pointer;
+}
+.pform_agree_text a{
+	text-decoration: underline;
+}
+.pform_button{
+	margin: 25px auto 30px;
+}
+.pform_butt{
+	position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    min-width: 250px;
+    max-width: 100%;
+    min-height: 50px;
+    padding: 13px 40px 13px 30px;
+    background-color: var(--color1);
+    color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 24px;
+    box-shadow: 5px 5px 0 #0067a7;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.pform_butt:after{
+	content: "";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    z-index: 10;
+    display: inline-block;
+    width: 16px;
+    height: 18px;
+    background-image: url(../img/right.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transform: translateY(-50%);
+}
+.pform_butt:hover{
+	color: #ffffff;
+    top: 3px;
+    left: 3px;
+    box-shadow: 2px 2px 0 #003777;
+}
+
 
 @media screen and (max-width: 1170px){
 	.customer{
@@ -1624,6 +1806,32 @@ input:focus{
 		width: 100%;
 		margin-left: 0;
 		padding: 8px 20px;
+	}
+	.pform{
+		padding-top: 50px;
+	}
+	.pform_input_block{
+		padding-left: 30px;
+	}
+	.pform_input{
+		height: 50px;
+		padding: 11px 10px;
+		font-size: 18px;
+	}	
+	.pform_input_block-name .pform_input_image{
+		width: 50px;
+	}
+	.pform_input_block-phone .pform_input_image{
+		width: 48px;
+	}
+	.pform_input_block-email .pform_input_image{
+		width: 60px;
+	}
+	.pform_agree{
+		text-align: left;
+	}
+	.pform_agree_text{
+		max-width: 200px;
 	}
 }
 

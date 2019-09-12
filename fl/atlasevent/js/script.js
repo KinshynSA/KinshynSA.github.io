@@ -41,6 +41,8 @@ window.onload = ()=>{
 				event.target.closest('.search_item-date').querySelector('.search_item-calendar').remove();
 			}
 		}
+
+		if(event.target.closest('.pform_close')) event.target.closest('.pform').remove();
 	});
 
 	document.addEventListener('keydown', function(event){
@@ -136,6 +138,20 @@ function checkInput(input){
 
 	return true;
 };
+
+
+
+/*function pformConfirm(e){
+	let formFlag = 1;
+
+	document.querySelectorAll('.pform_input_block input').forEach((item)=>{
+		if(item.required && !checkInput(item)) formFlag = 0;
+	});
+
+	if(formFlag){
+		alert('Vse ok');
+	};
+};*/
 
 
 
