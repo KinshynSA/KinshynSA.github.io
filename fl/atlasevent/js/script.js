@@ -131,27 +131,38 @@ function checkInput(input){
 
 	let val = input.value;
 
-	if((input.type == 'tel') && (val.length<10) || (val.length<1)){
-		input.classList.add('invalid');
-		return false;
+	if((input.type == 'tel')){
+		if((val.length<10) || (val.length<1)) noticeFalse(input);
 	};
+
+	if(input.type == 'email'){
+		let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		if(reg.test(input.value) == false) noticeFalse(input);
+	}
+
+	if(input.type == 'checkbox'){
+		if(!input.checked) noticeFalse(input);
+	}
+
+	function noticeFalse(item){
+		item.classList.add('invalid');
+		return false;
+	}
 
 	return true;
 };
 
 
 
-/*function pformConfirm(e){
+function pformConfirm(e){
 	let formFlag = 1;
 
 	document.querySelectorAll('.pform_input_block input').forEach((item)=>{
 		if(item.required && !checkInput(item)) formFlag = 0;
 	});
 
-	if(formFlag){
-		alert('Vse ok');
-	};
-};*/
+	if(formFlag) alert('Vse ok');
+};
 
 
 

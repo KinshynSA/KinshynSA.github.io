@@ -9,7 +9,7 @@
 </head>
 <body>
 
-		<div class="pform">
+		<form class="pform">
 			<img class="pform_close" src="img/close.png" alt="" />
 			<div class="pfrom_title">
 				<span class="pfrom_title_text">Дані замовника</span>
@@ -28,15 +28,15 @@
 			</div>
 			<div class="pform_agree">
 				<label class="pform_agree_checkbox" for="agree">
-					<input type="checkbox" id="agree">
+					<input type="checkbox" id="agree" required>
 					<img src="img/check.png" alt="" />
 				</label>
 				<label class="pform_agree_text" for="agree">Я згоден з <a href="#" target="_blank">правилами обслуговування!</a></label>
 			</div>
 			<div class="pform_button">
-				<a class="pform_butt" onclick="pformConfirm(event);">Сплатити за замовлення</a>
+				<a class="pform_butt" onclick="pformConfirm(event)">Сплатити за замовлення</a>
 			</div>
-		</div>
+		</form>
 
 <script src="js/script.js"></script>
 </body>
