@@ -1525,6 +1525,7 @@ input:focus{
 }
 .pform_agree_checkbox img{
 	display: block;
+	width: 32px;
 	opacity: 0;
 	transition: all 0.4s ease-in-out;
 }

@@ -123,17 +123,21 @@ function checkInput(input){
 
 	let val = input.value;
 
+	if((input.type == 'text')){
+		if(!val.length) return noticeFalse(input);
+	}
+
 	if((input.type == 'tel')){
-		if((val.length<10) || (val.length<1)) noticeFalse(input);
-	};
+		if((val.length<10) || (val.length<1)) return noticeFalse(input);
+	}
 
 	if(input.type == 'email'){
 		let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-		if(reg.test(input.value) == false) noticeFalse(input);
+		if(reg.test(val) == false) return noticeFalse(input);
 	}
 
 	if(input.type == 'checkbox'){
-		if(!input.checked) noticeFalse(input);
+		if(!input.checked) return noticeFalse(input);
 	}
 
 	function noticeFalse(item){
@@ -146,11 +150,12 @@ function checkInput(input){
 
 
 
-function pformConfirm(e){
+function formConfirm(e){
+	let form = event.target.closest('form');
 	let formFlag = 1;
 
-	document.querySelectorAll('.pform_input_block input').forEach((item)=>{
-		if(item.required && !checkInput(item)) formFlag = 0;
+	form.querySelectorAll('input').forEach((item)=>{
+		if((item.required || item.classList.contains('input_required')) && !checkInput(item)) formFlag = 0;
 	});
 
 	if(formFlag) alert('Vse ok');
