@@ -112,14 +112,15 @@ input:focus{
 
 
 .description{}
-.description .center-main-block{}
+.description .center-main-block{
+	padding-bottom: 25px;
+}
 .description_grid{
 	padding-top: 32px;
 	padding-left: 60px;
 	padding-right: 30px;
-	margin-bottom: 25px;
 	display: grid;
-	grid-template-columns: 300px 1fr 180px;
+	grid-template-columns: 300px 1fr 210px;
 }
 .description_image{
 	width: 275px;
@@ -169,7 +170,7 @@ input:focus{
 	overflow-y: auto;
 }*/
 .description_add{
-	margin-left: 30px;
+	padding-left: 30px;
 }
 .description_butt{
 	width: 124px;
@@ -206,7 +207,6 @@ input:focus{
 .description_price_num{}
 .description_alert{
 	margin-top: 20px;
-	margin-bottom: 12px;
 	text-align: center;
 }
 .description_alert_text{
@@ -246,7 +246,20 @@ input:focus{
 }
 
 
-.customers{}
+.customers{
+	position: relative;
+}
+.customers.closed{}
+.customers.closed:after{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
 .customers .center-main-block{}
 .customer{
 	position: relative;
@@ -348,6 +361,9 @@ input:focus{
 }
 .customer_input-block .select.active .select_option:hover{
 	background-color: #ffffff;
+}
+.customer_input-block-email .customer-image{
+	height: 40px;
 }
 .customer_input-block-name .customer_image{
 	height: 45px;
@@ -1402,12 +1418,35 @@ input:focus{
 }
 
 
+.pform-container{
+	position: fixed;
+	top: -200%;
+	left: 0;
+	z-index: 1900;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	min-width: 100vw;
+	min-height: 100vh;
+	background-color: rgba(0,0,0,0.7);
+	opacity: 0;
+	overflow-y: auto;
+	transition: opacity 0.6s ease-in-out, top 0.2s ease-in-out;
+}
+.pform-container.active{
+	top: 0;
+	opacity: 1;
+	transition: opacity 1s ease-in-out, top 0.4s ease-in-out;
+}
 .pform{
 	position: relative;
+	z-index: 2000;
 	width: 100%;
 	max-width: 620px;
 	padding: 25px 10px;
-	margin: 50px auto;
+	margin: auto;
 	background-color: #ededed;
 	background-image: linear-gradient(to bottom, #ededed, #f6f6f6);
 	text-align: center;
@@ -1510,26 +1549,39 @@ input:focus{
 	font-size: 18px;
 }
 .pform_agree_checkbox{
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	width: 46px;
 	height: 46px;
 	margin-right: 16px;
 	border-radius: 11px;
 	border: 2px solid #0f0f0f;
+	overflow: hidden;
 	cursor: pointer;
 }
 .pform_agree_checkbox input[type=checkbox]{
 	display: none;
 }
+.pform_agree_checkbox figure{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	transition: all 0.4s ease-in-out;	
+}
 .pform_agree_checkbox img{
 	display: block;
 	width: 32px;
 	opacity: 0;
-	transition: all 0.4s ease-in-out;
 }
-.pform_agree_checkbox input[type=checkbox]:checked~img{
+.pform_agree_checkbox input[type=checkbox].invalid~figure{
+	animation: pform_agree_checkbox 1s ease-in-out;
+}
+@keyframes pform_agree_checkbox{
+	0%{background-color: transparent;}
+	50%{background-color: #DD0000;}
+	100%{background-color: transparent;}
+}
+.pform_agree_checkbox input[type=checkbox]:checked~figure img{
 	opacity: 1;
 }
 .pform_agree_text{
@@ -1723,7 +1775,7 @@ input:focus{
 		margin-bottom: 10px;
 	}
 	.description_add{
-		margin-left: 0;
+		padding-left: 0;
 	}
 	.description_alert_text{
 		margin: 0 10px;
@@ -1816,6 +1868,9 @@ input:focus{
 	}
 	.pform{
 		padding-top: 50px;
+	}
+	.pform:before{
+		content: "";
 	}
 	.pform_input_block{
 		padding-left: 30px;

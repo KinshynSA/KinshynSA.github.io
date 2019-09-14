@@ -34,13 +34,13 @@
 						</div>
 					</div>
 					<div class="description_add">
-						<figure class="description_butt">
+						<figure class="description_butt description_butt-guest">
 							<img src="img/portret.png" alt="" />
 							<span>Додати гостя</span>
 						</figure>
 						<span class="description_price">
 							<img src="img/usd.png" alt="" />
-							<span class="description_price_text"><span class="description_price_num">300</span> грн</span>
+							<span class="description_price_text"><span class="description_price_num" data-price="300" data-counter="0">300</span> грн</span>
 						</span>
 					</div>
 				</div>
@@ -52,116 +52,53 @@
 		</section>
 
 		<section class="main-section customers">
-			<div class="center-main-block">
-				<article class="customer">
-					<div class="customer_input-block customer_input-block-type">
-						<label class="customer_label">Тип квитка:</label>
-						<div class="customer_flex">
-							<img class="customer_image" src="img/ticket.png" alt="" />
-							<select class="select-emulator">
-								<option value="1" selected>Дорослий</option>
-								<option value="2">Дитячий</option>
-								<option value="3">Жіночий</option>
-							</select>
-						</div>
-					</div>
-					<div class="customer_input-block customer_input-block-name">
-						<label class="customer_label">ПІБ гостя:</label>
-						<div class="customer_flex">
-							<img class="customer_image" src="img/face.png" alt="" />
-							<input class="customer_input" type="text" placeholder="Пупкін Василь Васильович" required>
-						</div>
-					</div>
-					<div class="customer_input-block customer_input-block-phone">
-						<label class="customer_label">Телефон гостя:</label>
-						<div class="customer_flex">
-							<img class="customer_image" src="img/phone.png" alt="" />
-							<input class="customer_input" type="tel" placeholder="+380 97 075 76 38" required>
-						</div>
-					</div>
-					<div class="customer_price">
-						<img class="customer_price_image" src="img/usd.png" alt="" />
-						<span class="customer_price_text"><span class="custom_price_num">300</span> грн</span>
-					</div>
-					<img class="customer_close" src="img/close.png" alt="" />
-				</article>
-				<article class="customer">
-					<div class="customer_input-block customer_input-block-type">
-						<label class="customer_label">Тип квитка:</label>
-						<div class="customer_flex">
-							<img class="customer_image" src="img/ticket.png" alt="" />
-							<select class="select-emulator">
-								<option value="1" selected>Дорослий</option>
-								<option value="2">Дитячий</option>
-								<option value="3">Жіночий</option>
-							</select>
-						</div>
-					</div>
-					<div class="customer_input-block customer_input-block-name">
-						<label class="customer_label">ПІБ гостя:</label>
-						<div class="customer_flex">
-							<img class="customer_image" src="img/face.png" alt="" />
-							<input class="customer_input" type="text" placeholder="Пупкін Василь Васильович" required>
-						</div>
-					</div>
-					<div class="customer_input-block customer_input-block-phone">
-						<label class="customer_label">Телефон гостя:</label>
-						<div class="customer_flex">
-							<img class="customer_image" src="img/phone.png" alt="" />
-							<input class="customer_input" type="tel" placeholder="+380 97 075 76 38" required>
-						</div>
-					</div>
-					<div class="customer_price">
-						<img class="customer_price_image" src="img/usd.png" alt="" />
-						<span class="customer_price_text"><span class="custom_price_num">300</span> грн</span>
-					</div>
-					<img class="customer_close" src="img/close.png" alt="" />
-				</article>
-				<article class="customer">
-					<div class="customer_input-block customer_input-block-type">
-						<label class="customer_label">Тип квитка:</label>
-						<div class="customer_flex">
-							<img class="customer_image" src="img/ticket.png" alt="" />
-							<select class="select-emulator">
-								<option value="1" selected>Дорослий</option>
-								<option value="2">Дитячий</option>
-								<option value="3">Жіночий</option>
-							</select>
-						</div>
-					</div>
-					<div class="customer_input-block customer_input-block-name">
-						<label class="customer_label">ПІБ гостя:</label>
-						<div class="customer_flex">
-							<img class="customer_image" src="img/face.png" alt="" />
-							<input class="customer_input" type="text" placeholder="Пупкін Василь Васильович" required>
-						</div>
-					</div>
-					<div class="customer_input-block customer_input-block-phone">
-						<label class="customer_label">Телефон гостя:</label>
-						<div class="customer_flex">
-							<img class="customer_image" src="img/phone.png" alt="" />
-							<input class="customer_input" type="tel" placeholder="+380 97 075 76 38" required>
-						</div>
-					</div>
-					<div class="customer_price">
-						<img class="customer_price_image" src="img/usd.png" alt="" />
-						<span class="customer_price_text"><span class="custom_price_num">300</span> грн</span>
-					</div>
-					<img class="customer_close" src="img/close.png" alt="" />
-				</article>
-			</div>
+			<form class="center-main-block">
+			</form>
 		</section>
 
-		<section class="main-section main-buttons">
+		<section class="main-section main-buttons hidden">
 			<div class="center-main-block">
 				<div class="main-buttons_flex">
 					<a class="main-button main-button-redact main-button-gray hooded">Редагувати</a>
+					<a class="main-button main-button-done">Готово</a>
 					<a class="main-button main-button-go hidden">Підтвердити</a>
-					<a class="main-button main-button-done" onclick="ticketsConfirm(event);">Готово</a>
 				</div>
 			</div>
 		</section>
 	</main>
+
+	<section class="pform-container">
+		<form class="pform">
+			<img class="pform_close" src="img/close.png" alt="" />
+			<div class="pfrom_title">
+				<span class="pfrom_title_text">Дані замовника</span>
+			</div>
+			<div class="pform_input_block pform_input_block-name">
+				<img class="pform_input_image" src="img/face.png" alt="" />
+				<input class="pform_input" type="text" placeholder="Пупкін Василь Васильович" required>
+			</div>
+			<div class="pform_input_block pform_input_block-phone">
+				<img class="pform_input_image" src="img/phone.png" alt="" />
+				<input class="pform_input" type="tel" placeholder="+380 97 075 76 38" required>
+			</div>
+			<div class="pform_input_block pform_input_block-email">
+				<img class="pform_input_image" src="img/email.png" alt="" />
+				<input class="pform_input" type="email" placeholder="exampleemail@gmail.com" required>
+			</div>
+			<div class="pform_agree">
+				<label class="pform_agree_checkbox" for="agree">
+					<input class="input_required" type="checkbox" id="agree">
+					<figure>
+						<img src="img/check.png" alt="" />
+					</figure>
+				</label>
+				<label class="pform_agree_text" for="agree">Я згоден з <a href="#" target="_blank">правилами обслуговування!</a></label>
+			</div>
+			<div class="pform_button">
+				<a class="pform_butt">Сплатити за замовлення</a>
+			</div>
+		</form>
+	</section>
 
 <script src="js/script.js"></script>
 </body>

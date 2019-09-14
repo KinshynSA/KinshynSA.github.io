@@ -2,9 +2,13 @@
 
 window.onload = ()=>{
 	document.addEventListener('click', function(event){
-		if(event.target.closest('.customer_close')) event.target.closest('.customer').remove();
+		if(event.target.closest('.customer_close')){
+			event.target.closest('.customer').remove();
+			//changePrice(false);
+			if(document.querySelectorAll('.customer').length <= 0) changeTicketsStatus(0);
+		};
 
-		if(event.target.closest('.sresult_sidebar_label'))event.target.closest('.sresult_sidebar_label').nextElementSibling.classList.toggle('active');
+		if(event.target.closest('.sresult_sidebar_label')) event.target.closest('.sresult_sidebar_label').nextElementSibling.classList.toggle('active');
 
 		if(event.target.closest('.search_item-location')){
 			let box = event.target.closest('.search_item-location');
@@ -34,7 +38,25 @@ window.onload = ()=>{
 			}
 		}
 
-		if(event.target.closest('.pform_close')) event.target.closest('.pform').remove();
+		if(event.target.closest('.description_butt-client')) document.querySelector('.pform-container').classList.add('active');
+		if(event.target.closest('.description_butt-guest')){
+			addTicket();
+			changeTicketsStatus(1);
+		};		
+		if(event.target.closest('.pform_close')) event.target.closest('.pform-container').classList.remove('active');
+		if(event.target.closest('.pform_butt')) checkPform(event);
+		if(event.target.closest('.main-button-redact')){			
+			changeTicketsStatus(2);
+		};
+		if(event.target.closest('.main-button-done')) document.querySelector('.pform-container').classList.add('active');
+		if(event.target.closest('.main-button-next')){
+			changeTicketsStatus(3);
+		};
+		if(event.target.closest('.main-button-go')){
+			let block = document.querySelector('.customer');
+			if(checkForm(block)) alert('Idet prodazha');
+		};
+		
 	});
 
 	document.addEventListener('keydown', function(event){
@@ -100,24 +122,6 @@ function emulateSelector(select){
 
 
 
-function ticketsConfirm(e){
-	let formFlag = 1;
-
-	document.querySelectorAll('.customer_input-block input').forEach((item)=>{
-		if(item.required && !checkInput(item)) formFlag = 0;
-	});
-
-	if(formFlag){
-		document.querySelector('.description_alert_text-check').classList.remove('hidden');
-		document.querySelector('.description_alert_text-fill').classList.add('hidden');
-		document.querySelector('.main-button-redact').classList.remove('hooded');
-		document.querySelector('.main-button-go').classList.remove('hidden');
-		document.querySelector('.main-button-done').classList.add('hidden');
-	};
-};
-
-
-
 function checkInput(input){
 	input.classList.remove('invalid');
 
@@ -150,17 +154,165 @@ function checkInput(input){
 
 
 
-function formConfirm(e){
-	let form = event.target.closest('form');
+function checkForm(target){
+	let form = target.closest('form');
 	let formFlag = 1;
 
 	form.querySelectorAll('input').forEach((item)=>{
 		if((item.required || item.classList.contains('input_required')) && !checkInput(item)) formFlag = 0;
 	});
 
-	if(formFlag) alert('Vse ok');
+	if(formFlag) return true;
+	return false;
 };
 
+
+function checkPform(e){
+	let result = checkForm(e.target);
+	if(result){
+		let form = event.target.closest('form');
+		let name = form.querySelector('.pform_input_block-name input').value;
+		let phone = form.querySelector('.pform_input_block-phone input').value;
+		let email = form.querySelector('.pform_input_block-email input').value;
+		let values = {
+			mainTicket : true,
+			name: name,
+			phone: phone,
+			email: email
+		};
+
+		addTicket(values);
+		changeTicketsStatus(2);
+		event.target.closest('.pform-container').classList.remove('active');
+	}
+};
+
+
+function changeTicketsStatus(status){
+	/*
+	0 - пустой экран
+	1 - есть от одного клиента, форма не заполнена
+	2 - есть от одного клиента, форма заполнена
+	3 - подтверждение
+	*/
+	if(status==0){
+		classChange('.description_alert_text-fill','hidden','remove');
+		classChange('.description_alert_text-check','hidden','add');
+		classChange('.main-buttons','hidden','add');		
+		classChange('.customers','closed','remove');		
+	} else if(status==1){
+		classChange('.description_alert_text-fill','hidden','remove');
+		classChange('.description_alert_text-check','hidden','add');
+		classChange('.main-buttons','hidden','remove');			
+		classChange('.main-button-redact','hooded','add');			
+		classChange('.main-button-done','hidden','remove');	
+		classChange('.main-button-go','hidden','add');			
+		classChange('.customers','closed','remove');		
+	} else if(status==2){
+		classChange('.description_alert_text-fill','hidden','remove');
+		classChange('.description_alert_text-check','hidden','add');
+		classChange('.main-buttons','hidden','remove');			
+		classChange('.main-button-redact','hooded','add');			
+		classChange('.main-button-done','hidden','remove');	
+		classChange('.main-button-done','main-button-next','add');	
+		classChange('.main-button-done','main-button-done','remove');			
+		classChange('.main-button-next','hidden','remove');	
+		classChange('.main-button-go','hidden','add');		
+		classChange('.customers','closed','remove');
+	} else if(status==3){
+		classChange('.description_alert_text-fill','hidden','add');
+		classChange('.description_alert_text-check','hidden','remove');
+		classChange('.main-buttons','hidden','remove');			
+		classChange('.main-button-redact','hooded','remove');			
+		classChange('.main-button-next','hidden','add');	
+		classChange('.main-button-go','hidden','remove');			
+		classChange('.customers','closed','add');
+	}
+
+	function classChange(selector,classValue,operation='add'){
+		document.querySelectorAll(selector).forEach((item)=>{
+			item.classList[operation](classValue);
+		});
+	}
+}
+
+
+function addTicket(obj){
+	let mainTicket = false;
+	let nameVal = '';
+	let phoneVal = '';
+	let emailVal = '';
+	if(obj){
+		mainTicket = obj.mainTicket;
+		nameVal = obj.name;
+		phoneVal = obj.phone;
+		emailVal = obj.email;
+	}
+	let required = mainTicket ?  'required' : '';
+
+	let ticket = document.createElement('article');
+	ticket.classList = 'customer';
+	let select = `<div class="customer_input-block customer_input-block-type">
+					<label class="customer_label">Тип квитка:</label>
+					<div class="customer_flex">
+						<img class="customer_image" src="img/ticket.png" alt="" />
+						<select class="select-emulator">
+							<option value="1" selected>Дорослий</option>
+							<option value="2">Дитячий</option>
+							<option value="3">Жіночий</option>
+						</select>
+					</div>
+				</div>`;
+	let mail = `<div class="customer_input-block customer_input-block-email">
+					<label class="customer_label">Email гостя:</label>
+					<div class="customer_flex">
+						<img class="customer_image" src="img/email.png" alt="" />
+						<input class="customer_input" type="text" placeholder="exampleemail@gmail.com" value="${emailVal}" ${required}>
+					</div>
+				</div>`;
+	let name = `<div class="customer_input-block customer_input-block-name">
+					<label class="customer_label">ПІБ гостя:</label>
+					<div class="customer_flex">
+						<img class="customer_image" src="img/face.png" alt="" />
+						<input class="customer_input" type="text" placeholder="Пупкін Василь Васильович" value="${nameVal}" ${required}>
+					</div>
+				</div>`;
+	let phone = `<div class="customer_input-block customer_input-block-phone">
+					<label class="customer_label">Телефон гостя:</label>
+					<div class="customer_flex">
+						<img class="customer_image" src="img/phone.png" alt="" />
+						<input class="customer_input" type="tel" placeholder="+380 97 075 76 38" value="${phoneVal}" ${required}>
+					</div>
+				</div>`;
+	let price = `<div class="customer_price">
+					<img class="customer_price_image" src="img/usd.png" alt="" />
+					<span class="customer_price_text"><span class="custom_price_num">300</span> грн</span>
+				</div>`;
+	let close = `<img class="customer_close" src="img/close.png" alt="" />`;
+	ticket.innerHTML = `${mainTicket ? mail : select}
+						${name}
+						${phone}
+						${price}
+						${mainTicket ? '' : close}`;
+
+
+
+	let block = document.querySelector('.customers .center-main-block');
+	mainTicket ? block.prepend(ticket) : block.append(ticket);
+	ticket.querySelectorAll('.select-emulator').forEach((select) => emulateSelector(select));
+	//changePrice();
+};
+
+
+/*function changePrice(operator=true){
+	let t = document.querySelector('.description_price_num');
+	if(operator){
+		t.dataset.counter++;
+	} else {
+		t.dataset.counter--;
+	}
+	t.textContent = t.dataset.counter * +t.dataset.price;	
+}*/
 
 
 	class Calendar{
