@@ -224,7 +224,7 @@ input:focus{
 	padding: 6px 10px 3px;
 	background-color: #c2c2c2;
 	color: #ffffff;
-	font-size: 18px;
+	font-size: 17px;
 	line-height: 21px;
 	text-align: center;
 }
@@ -1774,6 +1774,14 @@ input:focus{
 		grid-column: 2/3;
 		grid-row: 1/2;
 	}
+	.description_alert_block{
+		flex-direction: column;
+		font-size: 18px;
+	}
+	.description_alert{
+		min-width: 260px;
+		max-width: 100%;
+	}
 	.customers .center-main-block{
 		justify-content: center;
 	}
@@ -1933,6 +1941,10 @@ input:focus{
 }
 
 @media screen and (max-width: 400px){
+	.description_alert{
+		min-width: 260px;
+		width: calc(100% - 70px);
+	}
 	.customer{
 		padding: 40px 8vw 20px;
 	}
