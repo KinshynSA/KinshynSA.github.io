@@ -2,12 +2,6 @@
 
 window.onload = ()=>{
 	document.addEventListener('click', function(event){
-		if(event.target.closest('.customer_close')){
-			event.target.closest('.customer').remove();
-			//changePrice(false);
-			if(document.querySelectorAll('.customer').length <= 0) changeTicketsStatus(0);
-		};
-
 		if(event.target.closest('.sresult_sidebar_label')) event.target.closest('.sresult_sidebar_label').nextElementSibling.classList.toggle('active');
 
 		if(event.target.closest('.search_item-location')){
@@ -19,6 +13,7 @@ window.onload = ()=>{
 				box.querySelector('.select').classList.remove('active');
 			}
 		};
+
 
 		if(event.target.closest('.search_item-date')){
 			if(!event.target.closest('.search_item-date').classList.contains('active')){
@@ -38,8 +33,13 @@ window.onload = ()=>{
 			}
 		}
 
-		if(event.target.closest('.description_butt-client')) document.querySelector('.pform-container').classList.add('active');
-		if(event.target.closest('.description_butt-guest')){
+
+		if(event.target.closest('.customer_close')){
+			event.target.closest('.customer').remove();
+			if(document.querySelectorAll('.customer').length <= 0) changeTicketsStatus(0);
+		};
+
+		if(event.target.closest('.description_butt')){
 			addTicket();
 			changeTicketsStatus(1);
 		};		
@@ -196,22 +196,29 @@ function changeTicketsStatus(status){
 	3 - подтверждение
 	*/
 	if(status==0){
+		classChange('.description_alert','active','remove');
+		classChange('.description_alert_info','active','add');
+		classChange('.exposition','hidden','remove');
 		classChange('.description_alert_text-fill','hidden','remove');
-		classChange('.description_alert_text-check','hidden','add');
-		classChange('.main-buttons','hidden','add');		
+		classChange('.description_alert_text-check','hidden','add');	
+		classChange('.main-button-done','hidden','add');	
 		classChange('.customers','closed','remove');		
 	} else if(status==1){
+		classChange('.description_alert','active','remove');
+		classChange('.description_alert_fill','active','add');
+		classChange('.exposition','hidden','add');
 		classChange('.description_alert_text-fill','hidden','remove');
-		classChange('.description_alert_text-check','hidden','add');
-		classChange('.main-buttons','hidden','remove');			
+		classChange('.description_alert_text-check','hidden','add');	
 		classChange('.main-button-redact','hooded','add');			
 		classChange('.main-button-done','hidden','remove');	
 		classChange('.main-button-go','hidden','add');			
 		classChange('.customers','closed','remove');		
 	} else if(status==2){
+		classChange('.description_alert','active','remove');
+		classChange('.description_alert_fill','active','add');
+		classChange('.exposition','hidden','add');
 		classChange('.description_alert_text-fill','hidden','remove');
 		classChange('.description_alert_text-check','hidden','add');
-		classChange('.main-buttons','hidden','remove');			
 		classChange('.main-button-redact','hooded','add');			
 		classChange('.main-button-done','hidden','remove');	
 		classChange('.main-button-done','main-button-next','add');	
@@ -220,9 +227,11 @@ function changeTicketsStatus(status){
 		classChange('.main-button-go','hidden','add');		
 		classChange('.customers','closed','remove');
 	} else if(status==3){
+		classChange('.description_alert','active','remove');
+		classChange('.description_alert_pay','active','add');
+		classChange('.exposition','hidden','add');
 		classChange('.description_alert_text-fill','hidden','add');
-		classChange('.description_alert_text-check','hidden','remove');
-		classChange('.main-buttons','hidden','remove');			
+		classChange('.description_alert_text-check','hidden','remove');	
 		classChange('.main-button-redact','hooded','remove');			
 		classChange('.main-button-next','hidden','add');	
 		classChange('.main-button-go','hidden','remove');			
@@ -300,21 +309,11 @@ function addTicket(obj){
 	let block = document.querySelector('.customers .center-main-block');
 	mainTicket ? block.prepend(ticket) : block.append(ticket);
 	ticket.querySelectorAll('.select-emulator').forEach((select) => emulateSelector(select));
-	//changePrice();
 };
 
 
-/*function changePrice(operator=true){
-	let t = document.querySelector('.description_price_num');
-	if(operator){
-		t.dataset.counter++;
-	} else {
-		t.dataset.counter--;
-	}
-	t.textContent = t.dataset.counter * +t.dataset.price;	
-}*/
 
-
+// calendar start
 	class Calendar{
 		constructor(){}
 
@@ -508,3 +507,4 @@ function addTicket(obj){
 		}
 	}
 	let calendar = new Calendar();
+// calendar end

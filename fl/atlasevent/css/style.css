@@ -180,7 +180,14 @@ input:focus{
 	color: #ffffff;
 	text-align: center;
 	font-size: 14px;
+	opacity: 1;
 	border-radius: 28px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+.description_butt:hover{
+	opacity: 0.8;
+	transform: scale(1.05);
 }
 .description_butt img{
 	display: block;
@@ -205,33 +212,23 @@ input:focus{
 }
 .description_price_text{}
 .description_price_num{}
-.description_alert{
-	margin-top: 20px;
-	text-align: center;
+.description_alert_block{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
 }
-.description_alert_text{
+.description_alert{
 	position: relative;
-	display: inline-block;
+	margin: 20px 20px 0;
 	padding: 6px 10px 3px;
-	background-color: var(--color1);
+	background-color: #c2c2c2;
 	color: #ffffff;
 	font-size: 18px;
 	line-height: 21px;
+	text-align: center;
 }
-.description_alert_text:after{
-	content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-	border: 30px solid transparent;
-    border-top: 30px solid var(--color1);
-    border-left: 0 solid var(--color1);
-    transform: translateX(100%);
-}
-.description_alert_text:before{
+.description_alert:before{
 	content: "";
     display: block;
     width: 0;
@@ -240,9 +237,47 @@ input:focus{
     top: 0;
     left: 0;
 	border: 30px solid transparent;
-    border-bottom: 0 solid var(--color1);
-    border-right: 12px solid var(--color1);
+    border-bottom: 0 solid transparent;
+    border-right: 30px solid #c2c2c2;
     transform: translateX(-100%);
+}
+.description_alert:after{
+	content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+	border: 30px solid transparent;
+    border-top: 30px solid #c2c2c2;
+    border-left: 0 solid transparent;
+    transform: translateX(100%);
+}
+.description_alert.active{
+	background-color: var(--color1);
+}
+.description_alert.active:before{
+    border-right: 30px solid var(--color1);
+}
+.description_alert.active:after{
+    border-top: 30px solid var(--color1);
+}
+.description_alert_text{}
+
+
+.exposition{}
+.exposition .center-main-block{}
+.exposition-block{
+	padding: 20px 16px;
+	background-color: #ffffff;
+	font-size: 16px;
+}
+.exposition-block p{
+	margin-bottom: 14px;
+}
+.exposition-block p:last-of-type{
+	margin-bottom: 0;
 }
 
 
@@ -406,7 +441,7 @@ input:focus{
 
 
 .main-buttons{
-	padding: 4px 24px 36px;
+	padding: 4px 24px 16px;
 }
 .main-buttons_flex{
 	display: flex;
