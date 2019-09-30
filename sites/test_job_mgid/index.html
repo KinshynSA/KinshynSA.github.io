@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Тестовое задание</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="libs/slick/slick.css"/>
+</head>
+<body>
+	<header class="header-main">
+		<div class="center-main-block flex-block">
+			<figure class="logotype">
+				<span class="logotype_text">layout</span>
+			</figure>
+			<nav class="header-main_menu">
+				<a class="popup-open">html</a>
+				<a class="popup-open">css</a>
+				<a class="popup-open">javascript</a>
+			</nav>
+			<a href="#target" class="header-main_butt">Enter</a>
+		</div>
+	</header>
+
+	<section class="block-main block-slider">
+		<div class="center-main-block">
+			<div class="slider-arrow slider-arrow_left"></div>
+			<div class="slider-container">
+				<div class="slide">
+					<div class="slide-content">
+						<h1>Monetize<br>your skills now!</h1>
+						<a href="#target" class="slide_butt">GO!</a>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="slide-content">
+						<h1>Slide 2</h1>
+						<a href="#target" class="slide_butt">GO!</a>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="slide-content">
+						<h1>Slide 3</h1>
+						<a href="#target" class="slide_butt">GO!</a>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="slide-content">
+						<h1>Slide 4</h1>
+						<a href="#target" class="slide_butt">GO!</a>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="slide-content">
+						<h1>Slide 5</h1>
+						<a href="#target" class="slide_butt">GO!</a>
+					</div>
+				</div>
+			</div>
+			<div class="slider-arrow slider-arrow_right"></div>
+		</div>
+	</section>
+
+	<section class="block-main block-content">
+		<div class="center-main-block flex-block">
+			<div class="content-left">
+				<h2>Something about you</h2>
+				<p>In this section, you can specify any information about yourself, insert your photos, your interests and skills. It is also desirable to use tag canvas.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+			</div>
+			<div class="content-right">
+				<figure class="user-photo">
+					<figcaption>Your photo</figcaption>
+					<img src="img/photo.jpg" alt="" />
+				</figure>
+			</div>
+		</div>
+	</section>
+
+	<section id="target" class="block-main block-form">
+		<div class="center-main-block">
+			<form class="form-reg">
+				<h2>Register</h2>
+				<div class="form-reg_box">
+					<input type="email" placeholder="Email">
+				</div>
+				<div class="form-reg_box">
+					<input type="password" placeholder="Password">
+				</div>
+				<div class="form-reg_box">
+					<div class="select_imitator">Country</div>
+					<div class="option_imitator-container">
+						<div class="option_imitator-box" data-for="#select1">
+							<div class="option_imitator">Country 1</div>
+							<div class="option_imitator">Country 2</div>
+							<div class="option_imitator">Country 3</div>
+							<div class="option_imitator">Country 4</div>
+							<div class="option_imitator">Country 5</div>
+							<div class="option_imitator">Country 6</div>
+						</div>
+					</div>
+					<select id="select1">
+						<option selected disabled>Country</option>
+						<option>Country 1</option>
+						<option>Country 2</option>
+						<option>Country 3</option>
+						<option>Country 4</option>
+						<option>Country 5</option>
+						<option>Country 6</option>
+					</select>
+				</div>
+				<div class="form-reg_box">
+					<input type="submit" class="popup-open" value="Enter">
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<footer class="main-footer">
+		<div class="center-main-block">
+			<span class="footer-text">&copy; 2015 layout</span>
+		</div>
+	</footer>
+
+
+
+	<div class="popup-container">
+		<div class="popup">
+			<span class="popup-close fa fa-close"></span>
+			<p>Этот контент еще не согласован</p>
+		</div>
+	</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="libs/slick/slick.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('.slider-container').slick({
+  	dots: true
+  });
+
+
+  $('.slider-arrow_left').click(()=>$('.slick-prev').click());
+  $('.slider-arrow_right').click(()=>$('.slick-next').click());
+});
+</script>
+<script>
+function scrollImitate(container){
+	document.querySelectorAll(container).forEach((parent)=>{
+		let box = document.createElement('div');
+		box.classList = 'scroll-imitate_box';
+		let content = document.createElement('div');
+		content.classList = 'scroll-imitate_content';
+		while(parent.children.length){
+			content.append(parent.children[0]);
+		}
+		box.append(content);
+		parent.append(box);
+
+
+		let scrollLine = document.createElement('div');
+		scrollLine.classList = 'scroll-line';
+		let scrollItem = document.createElement('div');
+		scrollItem.classList = 'scroll-item';
+		scrollLine.append(scrollItem);
+		parent.append(scrollLine);
+
+
+		scrollItem.style.height = box.offsetHeight/content.offsetHeight * 100 + '%';
+
+
+		box.onscroll = ()=>{
+			scrollItem.style.top = box.scrollTop/content.offsetHeight * 100 + '%';
+			scrollItem.style.height = box.offsetHeight/content.offsetHeight * 100 + '%';
+		}
+	});
+}
+
+scrollImitate('.option_imitator-container');
+
+$('.select_imitator').click(function(){
+	$(this).next('.option_imitator-container').toggleClass('active')
+});
+$('.option_imitator').click(function(){
+	let box = this.closest('.option_imitator-box');
+	let container = this.closest('.option_imitator-container');
+	let m = 0;
+	let n = box.dataset.for;
+
+	container.classList.remove('active');
+	container.previousElementSibling.textContent = this.textContent;
+
+	for(let key in box.children){
+		if(box.children[key] == this) m=key;
+	}
+
+	$(n + ' option:eq(' + (+m + 1) + ')').attr('selected', true);
+});
+</script>
+<script>
+$('.popup-open').click(function(){
+	$('.popup-container').addClass('active');
+});
+$('.popup-close').click(function(){
+	$('.popup-container').removeClass('active');
+});
+
+$('.header-main_menu').click(function(){
+	$('.header-main_menu').toggleClass('active');
+})
+</script>
+</body>
