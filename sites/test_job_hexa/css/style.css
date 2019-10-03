@@ -330,6 +330,7 @@ input:focus{
 	display: inline-block;
 	width: 71px;
     text-align: left;
+    transition:  all 0.2s ease-in-out;
 }
 .wheel-label_text::selection {
    background: transparent;
