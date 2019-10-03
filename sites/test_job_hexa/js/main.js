@@ -83,41 +83,42 @@ window.onload =function(){
 
 		handleStart(event){
 			if(document.body.offsetWidth>640) return;
-			//console.log('s:',event.changedTouches['0'].screenX);
-			event.preventDefault();
 			this.pointStart = event.changedTouches['0'].screenX;
+		    this.pointCurrent = 0;
+			event.preventDefault();
 		}
 
 		handleEnd(event){
 			if(document.body.offsetWidth>640) return;
-			//console.log('e:',event.changedTouches['0'].screenX);
+	    	event.preventDefault();
+
 			this.pointStart = 0;
 		    this.pointCurrent = 0;
-	    	event.preventDefault();
 		}
 
 	  	handleCancel(event){
 			if(document.body.offsetWidth>640) return;
 	   		event.preventDefault();
+	   		
+			this.pointStart = 0;
+		    this.pointCurrent = 0;
 	  	}
 
 		handleMove(event){
 			if(document.body.offsetWidth>640) return;
-			//console.log('m:',this.pointCurrent - this.pointStart);
-			if(this.pointCurrent - this.pointStart >= 50){
+	    	event.preventDefault();
+
+	    	this.pointCurrent = event.changedTouches['0'].screenX;
+
+			if(this.pointCurrent - this.pointStart >= 40){
 				this.pointStart = this.pointCurrent;
 				let n = wheel.labelActive + 1;
-				if(n >= wheel.labels.length - 1) n = wheel.labels.length - 1;
-				wheel.transferLabels(wheel.labels[n]);
-			} else if(this.pointCurrent - this.pointStart <= -50){
+				if(n <= wheel.labels.length - 1) wheel.transferLabels(wheel.labels[n]);
+			} else if(this.pointCurrent - this.pointStart <= -40){
 				this.pointStart = this.pointCurrent;
 				let n = wheel.labelActive - 1;
-				if(n <= 0) n = 0;
-				wheel.transferLabels(wheel.labels[n]);
+				if(n >= 0) wheel.transferLabels(wheel.labels[n]);				
 			}
-
-	    	event.preventDefault();
-	    	this.pointCurrent = event.changedTouches['0'].screenX;
   		}
 	};
 
