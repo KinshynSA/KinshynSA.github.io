@@ -713,14 +713,14 @@ body:after{
 	}		
 	.wheel-block:before,
 	.wheel-block:after{
-		top: 108px;
+		top: 152px;
     	left: 50vw;
 	}
 	.wheel-block:before{
 		background-image: radial-gradient(#000 0%, #000 370px, #171717 370px, #171717 372px, #000 372px, #000 100%);
 	}
 	.wheel-block:after{
-		top: 306px;
+		top: 350px;
 		display: block;
 		width: 784px;
 		height: 784px;
@@ -728,10 +728,11 @@ body:after{
 	.wheel-block{
 		grid-column: 1/2;
 		grid-row: 4/5;
+		padding-bottom: 120px;
 	}
 	.wheel-box{
 		position: absolute;
-	    top: 0;
+	    top: 44px;
 	    left: 50%;
 	    z-index: 100;
 	    width: 616px;
@@ -750,7 +751,7 @@ body:after{
 		padding-top: 0;
 		padding-left: 13px;
 		margin-top: 82px;
-		margin-bottom: 120px;
+		margin-bottom: 76px;
 	}
 	.description-title{
 		margin: auto;
@@ -792,7 +793,7 @@ body:after{
 		grid-row: 5/6;
 		grid-row: 6/7;
 		position: relative;
-		margin-top: 170px;
+		margin-top: 50px;
 		padding-bottom: 86px;
 	}
 	.main-block-2:before{
