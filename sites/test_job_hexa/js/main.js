@@ -16,7 +16,6 @@ window.onload =function(){
 
 	class Wheel{
 		constructor(selector){
-			let self = this;
 			this.selector = selector;
 			this.wheel = document.getElementById(this.selector);
 			this.labels = document.querySelectorAll('.wheel-label');
@@ -26,15 +25,15 @@ window.onload =function(){
 
 			function spinWheel(event){
 				if(!event.target.closest('.wheel-label')) return;
-				self.transferLabels(event.target.closest('.wheel-label'));
+				this.transferLabels(event.target.closest('.wheel-label'));
 			}
-			this.wheel.addEventListener('click',spinWheel);
+			this.wheel.addEventListener('click',spinWheel.bind(this));
 
 
-		    this.wheel.addEventListener("touchstart", this.handleStart, false);
-		    this.wheel.addEventListener("touchend", this.handleEnd, false);
-		    this.wheel.addEventListener("touchcancel", this.handleCancel, false);
-		    this.wheel.addEventListener("touchmove", this.handleMove, false);
+		    this.wheel.addEventListener("touchstart", this.touchStart.bind(this), false);
+		    this.wheel.addEventListener("touchend", this.touchEnd.bind(this), false);
+		    this.wheel.addEventListener("touchcancel", this.touchCancel.bind(this), false);
+		    this.wheel.addEventListener("touchmove", this.touchMove.bind(this), false);
 		}
 
 		findActiveLabel(){
@@ -77,18 +76,19 @@ window.onload =function(){
 			});
 		}
 
+
+
 		pointStart
 		pointCurrent
-		pointEnd
 
-		handleStart(event){
+		touchStart(event){
 			if(document.body.offsetWidth>640) return;
 			this.pointStart = event.changedTouches['0'].screenX;
 		    this.pointCurrent = 0;
 			event.preventDefault();
 		}
 
-		handleEnd(event){
+		touchEnd(event){
 			if(document.body.offsetWidth>640) return;
 	    	event.preventDefault();
 
@@ -96,15 +96,15 @@ window.onload =function(){
 		    this.pointCurrent = 0;
 		}
 
-	  	handleCancel(event){
+	  	touchCancel(event){
 			if(document.body.offsetWidth>640) return;
 	   		event.preventDefault();
-	   		
+
 			this.pointStart = 0;
 		    this.pointCurrent = 0;
 	  	}
 
-		handleMove(event){
+		touchMove(event){
 			if(document.body.offsetWidth>640) return;
 	    	event.preventDefault();
 
@@ -112,12 +112,12 @@ window.onload =function(){
 
 			if(this.pointCurrent - this.pointStart >= 40){
 				this.pointStart = this.pointCurrent;
-				let n = wheel.labelActive + 1;
-				if(n <= wheel.labels.length - 1) wheel.transferLabels(wheel.labels[n]);
+				let n = this.labelActive + 1;
+				if(n <= this.labels.length - 1) this.transferLabels(this.labels[n]);
 			} else if(this.pointCurrent - this.pointStart <= -40){
 				this.pointStart = this.pointCurrent;
-				let n = wheel.labelActive - 1;
-				if(n >= 0) wheel.transferLabels(wheel.labels[n]);				
+				let n = this.labelActive - 1;
+				if(n >= 0) this.transferLabels(wheel.labels[n]);				
 			}
   		}
 	};
