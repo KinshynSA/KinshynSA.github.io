@@ -24,7 +24,7 @@ window.onload =function(){
 			this.applyStylesLabels();
 
 			this.wheel.addEventListener('click',this.spinWheel.bind(this));
-			this.wheel.addEventListener('mousedown',this.mouseStart.bind(this));
+			//this.wheel.addEventListener('mousedown',this.mouseStart.bind(this));
 
 		    this.wheel.addEventListener("touchstart", this.touchStart.bind(this), false);
 		    this.wheel.addEventListener("touchend", this.touchEnd.bind(this), false);
@@ -138,12 +138,12 @@ window.onload =function(){
 
 	    	this.touchPoinCurrent = event.changedTouches['0'].screenX;
 
-			if(this.touchPointCurrent - this.touchPoinStart >= 40){
-				this.touchPoinStart = this.touchCurrent;
+			if(this.touchPointCurrent - this.touchPointStart >= 40){
+				this.touchPointStart = this.touchCurrent;
 				let n = this.labelActive + 1;
 				if(n <= this.labels.length - 1) this.transferLabels(this.labels[n]);
-			} else if(this.touchPoinCurrent - this.touchPoinStart <= -40){
-				this.touchPoinStart = this.touchPoinCurrent;
+			} else if(this.touchPointCurrent - this.touchPointStart <= -40){
+				this.touchPointStart = this.touchPoinCurrent;
 				let n = this.labelActive - 1;
 				if(n >= 0) this.transferLabels(wheel.labels[n]);				
 			}
