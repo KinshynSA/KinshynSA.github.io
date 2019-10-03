@@ -105,15 +105,16 @@ window.onload =function(){
 			if(document.body.offsetWidth>640) return;
 			//console.log('m:',this.pointCurrent - this.pointStart);
 			if(this.pointCurrent - this.pointStart >= 30){
+				this.pointStart = this.pointCurrent;
 				let n = wheel.labelActive + 1;
 				if(n >= wheel.labels.length - 1) n = wheel.labels.length - 1;
 				wheel.transferLabels(wheel.labels[n]);
 			} else if(this.pointCurrent - this.pointStart <= -30){
+				this.pointStart = this.pointCurrent;
 				let n = wheel.labelActive - 1;
 				if(n <= 0) n = 0;
 				wheel.transferLabels(wheel.labels[n]);
 			}
-			this.pointStart = this.pointCurrent;
 
 	    	event.preventDefault();
 	    	this.pointCurrent = event.changedTouches['0'].screenX;
