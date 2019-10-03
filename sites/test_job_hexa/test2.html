@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test</title>
+</head>
+<body>
+
+<style>
+  body{
+    min-height: 200vh;
+  }
+  .box{
+    width: 50%;
+    height: 600px;
+    margin-top: 100px;
+    background-color: #121212;
+    overflow: hidden;
+  }
+  .box span{
+    display: inline-block;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    height: 1200px;
+    overflow-y: scroll;
+  }
+</style>
+
+
+<div id="box" class="box">
+  
+</div>
+
+
+<script>
+'use strict';
+
+class TouchHandler{
+  constructor(selector){
+    this.box = document.querySelector(selector);
+    box.addEventListener("touchstart", this.handleStart, false);
+    box.addEventListener("touchend", this.handleEnd, false);
+    box.addEventListener("touchcancel", this.handleCancel, false);
+    box.addEventListener("touchmove", this.handleMove, false);
+  }
+
+  pointStart
+  pointCurrent
+  pointEnd
+  ongoingTouches
+
+  handleStart(event){
+    event.preventDefault();
+    console.log('handleStart',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+  }
+
+  handleEnd(event){
+    event.preventDefault();
+    console.log('handleEnd',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+  }
+
+  handleCancel(event){
+    event.preventDefault();
+    console.log('handleCancel',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+  }
+
+  handleMove(event){
+    event.preventDefault();
+    console.log('handMove',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+  }
+}
+
+let touchHandler = new TouchHandler('#box');
+
+/*function startup(){
+  let box = document.getElementById('box');
+  box.addEventListener("touchstart", handleStart, false);
+  box.addEventListener("touchend", handleEnd, false);
+  box.addEventListener("touchcancel", handleCancel, false);
+  box.addEventListener("touchmove", handleMove, false);
+}
+startup();
+
+let pointStart;
+let pointCurrent;
+let pointEnd;
+var ongoingTouches = [];
+
+function handleStart(event){
+  event.preventDefault();
+  console.log('handleStart',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+}
+
+function handleEnd(event){
+  event.preventDefault();
+  console.log('handleEnd',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+}
+
+function handleCancel(event){
+  event.preventDefault();
+  console.log('handleCancel',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+}
+
+function handleMove(event){
+  event.preventDefault();
+  console.log('handMove',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+}*/
+</script>
+</body>
+</html>
