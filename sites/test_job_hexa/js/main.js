@@ -24,7 +24,7 @@ window.onload =function(){
 			this.applyStylesLabels();
 
 			this.wheel.addEventListener('click',this.spinWheel.bind(this));
-			//this.wheel.addEventListener('mousedown',this.mouseStart.bind(this));
+			this.wheel.addEventListener('mousedown',this.mouseStart.bind(this));
 
 		    this.wheel.addEventListener("touchstart", this.touchStart.bind(this), false);
 		    this.wheel.addEventListener("touchend", this.touchEnd.bind(this), false);
