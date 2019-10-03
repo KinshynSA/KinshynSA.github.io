@@ -14,64 +14,113 @@ window.onload =function(){
 	document.addEventListener('click', menuHandler);
 
 
-	function Wheel(){
-		let self = this;
-
-		this.prepare = function(){
-			this.wheel = document.querySelector('.wheel');
+	class Wheel{
+		constructor(selector){
+			let self = this;
+			this.selector = selector;
+			this.wheel = document.getElementById(this.selector);
 			this.labels = document.querySelectorAll('.wheel-label');
-
+			this.angleStep = 10;
 			this.findActiveLabel();
 			this.applyStylesLabels();
 
 			function spinWheel(event){
 				if(!event.target.closest('.wheel-label')) return;
-				self.transferLabels(event);
+				self.transferLabels(event.target.closest('.wheel-label'));
 			}
-			document.addEventListener('click',spinWheel);
+			this.wheel.addEventListener('click',spinWheel);
 
-			
-		};
 
-		this.findActiveLabel = function(){
+		    this.wheel.addEventListener("touchstart", this.handleStart, false);
+		    this.wheel.addEventListener("touchend", this.handleEnd, false);
+		    this.wheel.addEventListener("touchcancel", this.handleCancel, false);
+		    this.wheel.addEventListener("touchmove", this.handleMove, false);
+		}
+
+		findActiveLabel(){
 			this.labels.forEach((item,i,arr)=>{
 				if(item.classList.contains('active')) this.labelActive = i;
 			});
-		};
+		}
 
-		this.transferLabels = function(event){
+		transferLabels(target){
 			this.labels.forEach(item => item.classList.remove('active'));
-			event.target.closest('.wheel-label').classList.add('active');
+			target.classList.add('active');
 			this.findActiveLabel();
 			this.applyStylesLabels();	
-		};
+		}
 
-		this.applyStylesLabels = function(){
+		applyStylesLabels(angleStep = this.angleStep){
 			this.labels.forEach((item,i,arr)=>{
-				let angle = 10 * (i - this.labelActive);
+				let angle = angleStep * (i - this.labelActive);
 				item.style.transform = `translateY(-50%) rotate(${angle}deg)`;
-				item.style.opacity = 1;
 
-				if(angle>=60 || angle<=-60){
-					let op = 0.7 - (Math.abs(Math.abs(angle) - 60) * (1/20));
-					if(op<0) op = 0;
-					item.style.opacity = op;
+				let op = 1;
+				if(document.body.offsetWidth>1100){
+					if(angle>=60 || angle<=-60)	op = 0.7 - (Math.abs(Math.abs(angle) - 60) * (1/20));
+				} else if(document.body.offsetWidth>640){
+					if(angle>40 || angle<-40) op = 0;	
+				} else{
+					if(angle>=30 || angle<=-30)	op = 0.7 - (Math.abs(Math.abs(angle) - 30) * (1/20));
 				}
+				if(op<0) op = 0;
+				item.style.opacity = op;
 			});
 			this.changeDescription();
-		};
+		}
 
-		this.changeDescription = function(){
+		changeDescription(){
 			let activeYear = document.querySelector('.wheel-label.active').dataset.year;
 			selectorAllHandler('.description-box',item => {
 				item.classList.remove('active');
 				if(item.dataset.year == activeYear) item.classList.add('active');
 			});
-		};
+		}
+
+		pointStart
+		pointCurrent
+		pointEnd
+
+		handleStart(event){
+			if(document.body.offsetWidth>640) return;
+			//console.log('s:',event.changedTouches['0'].screenX);
+			event.preventDefault();
+			this.pointStart = event.changedTouches['0'].screenX;
+		}
+
+		handleEnd(event){
+			if(document.body.offsetWidth>640) return;
+			//console.log('e:',event.changedTouches['0'].screenX);
+			this.pointStart = 0;
+		    this.pointCurrent = 0;
+	    	event.preventDefault();
+		}
+
+	  	handleCancel(event){
+			if(document.body.offsetWidth>640) return;
+	   		event.preventDefault();
+	  	}
+
+		handleMove(event){
+			if(document.body.offsetWidth>640) return;
+			//console.log('m:',this.pointCurrent - this.pointStart);
+			if(this.pointCurrent - this.pointStart>=10){
+				let n = wheel.labelActive + 1;
+				if(n >= wheel.labels.length - 1) n = wheel.labels.length - 1;
+				wheel.transferLabels(wheel.labels[n]);
+			} else if(this.pointCurrent - this.pointStart<= -10){
+				let n = wheel.labelActive - 1;
+				if(n <= 0) n = 0;
+				wheel.transferLabels(wheel.labels[n]);
+			}
+			this.pointStart = this.pointCurrent;
+
+	    	event.preventDefault();
+	    	this.pointCurrent = event.changedTouches['0'].screenX;
+  		}
 	};
 
-	let wheel = new Wheel();
-	wheel.prepare(); 
+	let wheel = new Wheel('wheel-box');
 
 
 	function linksTransitionStop(event){

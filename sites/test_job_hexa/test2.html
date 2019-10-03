@@ -53,60 +53,31 @@ class TouchHandler{
 
   handleStart(event){
     event.preventDefault();
-    console.log('handleStart',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+    this.pointStart = event.changedTouches['0'].screenX;
+    //console.log('handleStart',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
   }
 
   handleEnd(event){
+    console.log(this.pointCurrent - this.pointStart);
+    this.pointStart = 0;
+    this.pointCurrent = 0;
     event.preventDefault();
-    console.log('handleEnd',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+    //console.log('handleEnd',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
   }
 
   handleCancel(event){
     event.preventDefault();
-    console.log('handleCancel',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+    //console.log('handleCancel',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
   }
 
   handleMove(event){
     event.preventDefault();
-    console.log('handMove',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
+    this.pointCurrent = event.changedTouches['0'].screenX;
+    //console.log('handMove',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
   }
 }
 
 let touchHandler = new TouchHandler('#box');
-
-/*function startup(){
-  let box = document.getElementById('box');
-  box.addEventListener("touchstart", handleStart, false);
-  box.addEventListener("touchend", handleEnd, false);
-  box.addEventListener("touchcancel", handleCancel, false);
-  box.addEventListener("touchmove", handleMove, false);
-}
-startup();
-
-let pointStart;
-let pointCurrent;
-let pointEnd;
-var ongoingTouches = [];
-
-function handleStart(event){
-  event.preventDefault();
-  console.log('handleStart',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
-}
-
-function handleEnd(event){
-  event.preventDefault();
-  console.log('handleEnd',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
-}
-
-function handleCancel(event){
-  event.preventDefault();
-  console.log('handleCancel',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
-}
-
-function handleMove(event){
-  event.preventDefault();
-  console.log('handMove',event.changedTouches['0'].screenX,event.changedTouches['0'].screenY);
-}*/
 </script>
 </body>
 </html>
