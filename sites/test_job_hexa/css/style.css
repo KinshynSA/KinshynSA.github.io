@@ -325,7 +325,7 @@ input:focus{
 }
 .wheel-label_text{
 	position: absolute;
-    top: -2px;
+    top: -3px;
     right: -94px;
 	display: inline-block;
 	width: 71px;
