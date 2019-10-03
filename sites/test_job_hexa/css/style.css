@@ -369,11 +369,19 @@ body:after{
 .wheel-label.active{
 	color: var(--color1);
 }
-.wheel-label span{
+.wheel-label_text{
+	position: absolute;
+    top: -2px;
+    right: -94px;
 	display: inline-block;
 	width: 71px;
     text-align: left;
-    transform: translateX(94px) translateY(2px);
+}
+.wheel-label_text::selection {
+   background: transparent;
+}
+.wheel-label_text::-moz-selection {
+   background: transparent;
 }
 .wheel-label:hover span{
 	color: var(--color1);
@@ -385,11 +393,11 @@ body:after{
 	grid-row: 3/4;
 	padding-top: 46px;
 	padding-left: 258px;
+	color: #ffd7f1;
 }
 .description-title{
 	max-width: 370px;
 	margin-bottom: 30px;
-	color: #ffd7f1;
 }
 .description-container{}
 .description-box{
@@ -410,7 +418,10 @@ body:after{
 	font-family: var(--font2);
 	font-weight: 700;
 	line-height: 1;
-	letter-spacing: 0.13em;
+	letter-spacing: 0.13em;	
+	background: linear-gradient(-176deg, #c02ac6, #fa2caf);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 .description-year:before{
 	content: "";
@@ -742,8 +753,8 @@ body:after{
 	.wheel-list{
 		font-size: 11.26px;
 	}
-	.wheel-label span{
-		transform: translateX(83px) translateY(2px);
+	.wheel-label_text{
+		right: -83px;
 	}
 	.description-block{
 		grid-column: 1/2;

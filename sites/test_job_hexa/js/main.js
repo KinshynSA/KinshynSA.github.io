@@ -23,19 +23,15 @@ window.onload =function(){
 			this.findActiveLabel();
 			this.applyStylesLabels();
 
-			function spinWheel(event){
-				if(!event.target.closest('.wheel-label')) return;
-				this.transferLabels(event.target.closest('.wheel-label'));
-			}
-			this.wheel.addEventListener('click',spinWheel.bind(this));
-
+			this.wheel.addEventListener('click',this.spinWheel.bind(this));
+			this.wheel.addEventListener('mousedown',this.mouseStart.bind(this));
 
 		    this.wheel.addEventListener("touchstart", this.touchStart.bind(this), false);
 		    this.wheel.addEventListener("touchend", this.touchEnd.bind(this), false);
 		    this.wheel.addEventListener("touchcancel", this.touchCancel.bind(this), false);
 		    this.wheel.addEventListener("touchmove", this.touchMove.bind(this), false);
 		}
-
+ 
 		findActiveLabel(){
 			this.labels.forEach((item,i,arr)=>{
 				if(item.classList.contains('active')) this.labelActive = i;
@@ -76,15 +72,47 @@ window.onload =function(){
 			});
 		}
 
+		spinWheel(event){
+			if(document.body.offsetWidth<641 || !event.target.closest('.wheel-label_text')) return;
+			this.transferLabels(event.target.closest('.wheel-label'));
+		}
+
+		mouseStart(event){
+			if(document.body.offsetWidth<900 || !event.target.closest('.wheel-block')) return;
+			this.mousePointStart = event.clientY;
+
+			function mouseMove(event){
+				this.mousePointCurrent = event.clientY;
+
+				if(this.mousePointCurrent - this.mousePointStart <= -40){
+					this.mousePointStart = this.mousePointCurrent;
+					let n = this.labelActive - 1;
+					if(n >= 0) this.transferLabels(wheel.labels[n]);
+				} else if(this.mousePointCurrent - this.mousePointStart >= 40){	
+					this.mousePointStart = this.mousePointCurrent;
+					let n = this.labelActive + 1;
+					if(n <= this.labels.length - 1) this.transferLabels(this.labels[n]);			
+				}
+			}
+			mouseMove = mouseMove.bind(this);
 
 
-		pointStart
-		pointCurrent
+			function mouseEnd(event){
+				this.mousePointStart = 0;
+				this.mousePointCurrent = 0;
+
+				document.removeEventListener('mousemove',mouseMove);
+			}
+			mouseEnd = mouseEnd.bind(this);
+
+			document.addEventListener('mousemove',mouseMove);
+			document.addEventListener('mouseup',mouseEnd);
+		}
 
 		touchStart(event){
 			if(document.body.offsetWidth>640) return;
-			this.pointStart = event.changedTouches['0'].screenX;
-		    this.pointCurrent = 0;
+			this.touchPointStart = event.changedTouches['0'].screenX;
+		    this.touchPointCurrent = 0;
 			event.preventDefault();
 		}
 
@@ -92,30 +120,30 @@ window.onload =function(){
 			if(document.body.offsetWidth>640) return;
 	    	event.preventDefault();
 
-			this.pointStart = 0;
-		    this.pointCurrent = 0;
+			this.touchPointStart = 0;
+		    this.touchPointCurrent = 0;
 		}
 
 	  	touchCancel(event){
 			if(document.body.offsetWidth>640) return;
 	   		event.preventDefault();
 
-			this.pointStart = 0;
-		    this.pointCurrent = 0;
+			this.touchPointStart = 0;
+		    this.touchPointCurrent = 0;
 	  	}
 
 		touchMove(event){
 			if(document.body.offsetWidth>640) return;
 	    	event.preventDefault();
 
-	    	this.pointCurrent = event.changedTouches['0'].screenX;
+	    	this.touchPoinCurrent = event.changedTouches['0'].screenX;
 
-			if(this.pointCurrent - this.pointStart >= 40){
-				this.pointStart = this.pointCurrent;
+			if(this.touchPointCurrent - this.touchPoinStart >= 40){
+				this.touchPoinStart = this.touchCurrent;
 				let n = this.labelActive + 1;
 				if(n <= this.labels.length - 1) this.transferLabels(this.labels[n]);
-			} else if(this.pointCurrent - this.pointStart <= -40){
-				this.pointStart = this.pointCurrent;
+			} else if(this.touchPoinCurrent - this.touchPoinStart <= -40){
+				this.touchPoinStart = this.touchPoinCurrent;
 				let n = this.labelActive - 1;
 				if(n >= 0) this.transferLabels(wheel.labels[n]);				
 			}
@@ -128,7 +156,7 @@ window.onload =function(){
 	function linksTransitionStop(event){
 		if(event.target.tagName.toLowerCase() != 'a' && event.target.href != 'next') return;
 
-		console.log('click');
+		console.log('На эту часть макета не было');
 		event.preventDefault();
 	};
 	document.addEventListener('click', linksTransitionStop);
