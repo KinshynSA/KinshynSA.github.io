@@ -104,11 +104,11 @@ window.onload =function(){
 		handleMove(event){
 			if(document.body.offsetWidth>640) return;
 			//console.log('m:',this.pointCurrent - this.pointStart);
-			if(this.pointCurrent - this.pointStart>=10){
+			if(this.pointCurrent - this.pointStart >= 30){
 				let n = wheel.labelActive + 1;
 				if(n >= wheel.labels.length - 1) n = wheel.labels.length - 1;
 				wheel.transferLabels(wheel.labels[n]);
-			} else if(this.pointCurrent - this.pointStart<= -10){
+			} else if(this.pointCurrent - this.pointStart <= -30){
 				let n = wheel.labelActive - 1;
 				if(n <= 0) n = 0;
 				wheel.transferLabels(wheel.labels[n]);
