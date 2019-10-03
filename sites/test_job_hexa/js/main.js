@@ -136,14 +136,14 @@ window.onload =function(){
 			if(document.body.offsetWidth>640) return;
 	    	event.preventDefault();
 
-	    	this.touchPoinCurrent = event.changedTouches['0'].screenX;
+	    	this.touchPointCurrent = event.changedTouches['0'].screenX;
 
 			if(this.touchPointCurrent - this.touchPointStart >= 40){
-				this.touchPointStart = this.touchCurrent;
+				this.touchPointStart = this.touchPointCurrent;
 				let n = this.labelActive + 1;
 				if(n <= this.labels.length - 1) this.transferLabels(this.labels[n]);
 			} else if(this.touchPointCurrent - this.touchPointStart <= -40){
-				this.touchPointStart = this.touchPoinCurrent;
+				this.touchPointStart = this.touchPointCurrent;
 				let n = this.labelActive - 1;
 				if(n >= 0) this.transferLabels(wheel.labels[n]);				
 			}
