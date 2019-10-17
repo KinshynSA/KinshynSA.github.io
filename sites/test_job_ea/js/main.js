@@ -40,7 +40,6 @@ class ChangeHomeScreens{
 	}
 
 	scrollScreen(direction){
-		this.blocked = true;
 		let n;
 
 		if(direction){
@@ -50,6 +49,7 @@ class ChangeHomeScreens{
 			if(this.screenN == this.screensArr.length - 1) return;
 			n = this.screenN + 1;
 		}
+		this.blocked = true;
 
 		if(n<0) n = 0;
 		if(n>this.screensArr.length - 1) n = this.screensArr.length - 1;
@@ -57,12 +57,12 @@ class ChangeHomeScreens{
 		this.screensArr[this.screenN].classList.add('departed');
 		let t = +this.screensArr[this.screenN].dataset.delay;
 		this.screenN = n;
-		this.screensArr[this.screenN].classList.remove('departed');
+		this.screensArr[n].classList.remove('departed');
 
 		setTimeout(() => {
-			this.screensArr[this.screenN].classList.add('active');
+			this.screensArr[n].classList.add('active');
 			this.blocked = false;
-		},t);
+		}, t);
 	}
 
 	scrollScreenTouch(event){	
