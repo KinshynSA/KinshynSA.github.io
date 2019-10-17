@@ -184,7 +184,9 @@ input:focus{
 	width: 647px;
 	opacity: 1;
 	transform: scale(1);
-	transition: all 2s linear;
+	transition-property: top, right, opacity, transform;
+	transition-duration: 2s;
+	transition-timing-function: linear;
 }
 .screen-block.departed .sf_square-1{
 	top: 66px;
@@ -204,7 +206,9 @@ input:focus{
 	background: rgba(0, 153, 136, 0.5);
 	opacity: 1;
 	transform: scale(1);
-	transition: all 2.41s linear;
+	transition-property: top, right, opacity, transform;
+	transition-duration: 2.41s;
+	transition-timing-function: linear;
 }
 .screen-block.departed .sf_square-2{
 	top: 23px;
@@ -219,7 +223,10 @@ input:focus{
 	width: 394px;
 	opacity: 1;
 	transform: scale(1);
-	transition: all 2.125s linear 0.875s;
+	transition-property: top, left, opacity, transform;
+	transition-duration: 2.125s;
+	transition-timing-function: linear;
+	transition-delay: 0.875s;
 }
 .screen-block.departed .sf_square-3{
 	top: 177px;
@@ -238,7 +245,10 @@ input:focus{
 	text-align: left;
 	opacity: 1;
 	transform: scale(1);
-	transition: all 3s linear 1s;
+	transition-property: top, left, opacity, transform;
+	transition-duration: 3s;
+	transition-timing-function: linear;
+	transition-delay: 1;
 }
 .screen-block.departed .sf_title{
 	top: 144px;
