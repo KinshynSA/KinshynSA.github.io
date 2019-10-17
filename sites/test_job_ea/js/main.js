@@ -55,14 +55,15 @@ class ChangeHomeScreens{
 		if(n>this.screensArr.length - 1) n = this.screensArr.length - 1;
 		this.screensArr[this.screenN].classList.remove('active');
 		this.screensArr[this.screenN].classList.add('departed');
-		let t = +this.screensArr[this.screenN].dataset.delay;
+		let tDelay = +this.screensArr[this.screenN].dataset.delay;
+		let tEnd = +this.screensArr[this.screenN].dataset.end;
 		this.screenN = n;
 		this.screensArr[n].classList.remove('departed');
 
 		setTimeout(() => {
 			this.screensArr[n].classList.add('active');
-			this.blocked = false;
-		}, t);
+			setTimeout(() => this.blocked = false, tEnd);
+		}, tDelay);
 	}
 
 	scrollScreenTouch(event){	
