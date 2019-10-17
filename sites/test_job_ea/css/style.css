@@ -192,7 +192,6 @@ input:focus{
 	opacity: 0;
 	transform: scale(0.17);
 }
-.screen-block.active .sf_square-1{}
 .sf_square-2{
 	content: "";
 	position: absolute;
@@ -213,7 +212,6 @@ input:focus{
 	opacity: 0;
 	transform: scale(0.24);
 }
-.screen-block.active .sf_square-2{}
 .sf_square-3{
 	top: 359px;
 	left: 47px;
@@ -229,7 +227,6 @@ input:focus{
 	opacity: 0;
 	transform: scale(0.56);
 }
-.screen-block.active .sf_square-3{}
 .sf_title{
 	position: absolute;
 	top: 166px;
@@ -249,7 +246,6 @@ input:focus{
 	opacity: 0;
 	transform: scale(0.28);
 }
-.screen-block.active .sf_title{}
 
 .screen-block-2{
 	padding-top: 189px;
