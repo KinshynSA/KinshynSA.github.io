@@ -25,7 +25,6 @@ $RECYCLE.BIN/
 # =========================
 
 .DS_Store
-sites/test_job_ea/fonts/*
 .AppleDouble
 .LSOverride
 
