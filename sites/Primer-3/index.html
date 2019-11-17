@@ -32,18 +32,18 @@
 			<div class="slider_container">
 				<div class="slider_box">
 
-					<div class="slide">
+					<div class="slide active">
 						<div class="center-main-block">
 							<div class="slider_content">
 								<h1 class="slider_title">Мы делаем классные проекты, которые нравятся людям</h1>
 								<p>и эффективно выполняют маркетинговые задачи международных брендов</p>
-								<a class="slider_butt slider_butt-video">Смотреть видео</a>
+								<a class="slider_butt slider_butt-video" data-action="open-video" data-stuff="video/slide-1.mp4">Смотреть видео</a>
 							</div>
 						</div>
-						<div class="slider_backgrounds">
-							<div class="slider_background"></div>
-							<div class="slider_background"></div>
-							<div class="slider_background"></div>
+						<div class="slider_backgrounds-video">
+							<video class="slider_background-video" autoplay="autoplay" loop="loop" muted="muted" width="100%">
+								<source src="video/slide-1.mp4">
+							</video>							
 						</div>
 					</div>
 
@@ -52,7 +52,7 @@
 							<div class="slider_content">
 								<h1 class="slider_title">Название компании 1</h1>
 								<p>что мы для нее сделали</p>
-								<a class="slider_butt">Подробнее</a>
+								<a class="slider_butt" data-action="open-info">Подробнее</a>
 							</div>
 							<figure class="slider_image">
 								<img src="img/slide-1.png" alt="" />
@@ -70,7 +70,7 @@
 							<div class="slider_content">
 								<h1 class="slider_title">Название компании 2</h1>
 								<p>что мы для нее сделали</p>
-								<a class="slider_butt">Подробнее</a>
+								<a class="slider_butt" data-action="open-info">Подробнее</a>
 							</div>
 							<figure class="slider_image">
 								<img src="img/slide-2.png" alt="" />
@@ -83,12 +83,12 @@
 						</div>
 					</div>
 
-					<div class="slide active">
+					<div class="slide">
 						<div class="center-main-block">
 							<div class="slider_content">
 								<h1 class="slider_title">Название компании 3</h1>
 								<p>что мы для нее сделали</p>
-								<a class="slider_butt">Подробнее</a>
+								<a class="slider_butt" data-action="open-info">Подробнее</a>
 							</div>
 							<figure class="slider_image">
 								<img src="img/slide-3.png" alt="" />
@@ -106,11 +106,51 @@
 							<div class="slider_content">
 								<h1 class="slider_title">Название компании 4</h1>
 								<p>что мы для нее сделали</p>
-								<a class="slider_butt">Подробнее</a>
+								<a class="slider_butt" data-action="open-info">Подробнее</a>
 							</div>
 							<figure class="slider_image">
 								<img src="img/slide-4.png" alt="" />
 							</figure>
+						</div>
+						<div class="slide_parts">
+							<div class="slide_part slide_part-left">
+								<header class="slide_part_header">
+									<figure class="logotype">
+										<a class="logotype_link" href="index.html">
+											<img src="img/logo_white.png" alt="" />
+											<span class="logotype_text">Logotype</span>
+										</a>
+									</figure>
+									<nav class="slide_navigation">
+										<a class="slide_navigation_link" href="/about.html">О нас</a>
+										<a class="slide_navigation_link" href="/careers.html">Вакансии</a>
+										<a class="slide_navigation_link" href="/contact.html">Контакты</a>
+									</nav>
+									<a class="slide_part_close"><i class="fa fa-close"></i><span>Закрыть</span></a>
+								</header>
+								<div class="slide_part_main">
+									<h2 class="slider_part_title">Название компании 4</h2>
+									<p class="slider_part_undertitle">что мы для нее сделали</p>
+									<div class="slider_part_info">
+										<ul class="slider_part_punkts">
+											<li class="slider_part_punkt">
+												<span class="slider_part_punkt_item">1008</span>новых покупателей
+											</li>
+											<li class="slider_part_punkt">
+												<span class="slider_part_punkt_item">56 700</span>человек узнало об этой компании от нас
+											</li>
+											<li class="slider_part_punkt">
+												<span class="slider_part_punkt_item">12 639$</span>чистой прибыли
+											</li>
+											<li class="slider_part_punkt">
+												<span class="slider_part_punkt_item">11</span>наших сотрудников получило зарплату благодаря этому проекту
+											</li>
+										</ul>
+										<p>В профессиональной сфере часто случается так, что личные или корпоративные клиенты заказывают, чтобы публикация была сделана и представлена еще тогда, когда фактическое содержание все еще не готово. Вспомните новостные блоги, где информация публикуется каждый час в живом порядке. Тем не менее, читатели склонны к тому, чтобы быть отвлеченными доступным контентом, скажем, любым текстом, который был скопирован из газеты или интернета.</p>
+									</div>
+								</div>
+							</div>
+							<div class="slide_part slide_part-right"></div>
 						</div>
 						<div class="slider_backgrounds">
 							<div class="slider_background"></div>

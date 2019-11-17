@@ -2,6 +2,8 @@
 
 window.onload = function(){
 	let slider = new Slider('.slider_container');
+	
+	document.addEventListener('click',openSliderInfo);
 }
 
 
@@ -16,7 +18,7 @@ class Slider{
 			this.slideAll();
 
 			this.box.addEventListener('mousedown',this.mouseFlip.bind(this));
-		    this.box.addEventListener("touchstart", this.touchFlip.bind(this));
+		    this.box.addEventListener('touchstart', this.touchFlip.bind(this));
 		});
 	}
 
@@ -159,4 +161,11 @@ class Slider{
 		this.box.addEventListener('touchend', touchEnd.bind(this));
 		this.box.addEventListener('touchcancel', touchEnd.bind(this));
 	}
+}
+
+
+function openSliderInfo(event){
+	if(!event.target.classList.contains('slider_butt')) return;
+
+	
 }
