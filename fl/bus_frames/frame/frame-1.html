@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Frame 1</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<style type="text/css">
+	.sale_block{
+		color: #121212;
+		font-family: Roboto, sans-serif;
+		font-size: 14px;
+		line-height: 16px;
+	    box-sizing: border-box;
+	}
+	.sale_block *{
+	    margin: 0;
+	    padding: 0;
+	    font-family: inherit;
+	    word-break: break-word;
+	    box-sizing: border-box;
+	    -webkit-appearance: none;
+	    -moz-appearance: none;
+	    border: none;
+	    outline: none;
+	}
+	.sale_block .sale_form{
+		max-width: 700px;
+		padding: 20px;
+		margin: 0 auto;
+	    background-color: #ffffff;
+	    border-radius: 4px;
+	    border: 1px solid rgba(0,0,0,0.2);
+	    box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
+	}
+	.sale_text{
+		margin-bottom: 20px;
+		font-weight: 700;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	.sale_box{}
+	.sale_item{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 10px;
+	}
+	.sale_item-top{}
+	.sale_title-top{
+		color: #833caa;
+		font-weight: 700;
+	}
+	.sale_title-top:nth-of-type(1){
+		flex-grow: 100;
+	}
+	.sale_title-top:nth-of-type(2){
+		width: 80px;
+		min-width: 80px;
+		text-align: center;
+	}
+	.sale_title-top:nth-of-type(3){
+		width: 120px;
+		min-width: 120px;
+		text-align: right;
+	}
+	.sale_title-top:nth-of-type(4){
+		width: 120px;
+		min-width: 120px;
+		text-align: right;
+	}
+	.sale_title{
+		flex-grow: 100;
+	}
+	.sale_places{
+		width: 80px;
+		min-width: 80px;
+		text-align: center;
+	}
+	.sale_prices{
+		display: flex;
+		align-items: center;
+		width: 240px;
+		min-width: 240px;
+	}
+	.sale_price{
+		width: 50%;
+		font-weight: 500;
+		text-align: right;
+	}
+	.sale_price_title{
+		display: none;
+		color: #833caa;
+		font-weight: 700;
+	}
+	.sale_sum{
+		display: flex;
+		justify-content: flex-end;
+		padding: 10px;
+		margin-bottom: 16px;
+		background-color: #f4f4f4;
+		border-radius: 4px;
+	}
+	.sale_sum_text{
+		text-align: right;
+	}
+	.sale_sum_price{
+		width: 120px;
+		min-width: 120px;
+		text-align: right;
+	}
+	.sale_buttons{
+		display: flex;
+		justify-content: space-between;
+	}
+	.sale_buttons_image{}
+	.sale_buttons_right{
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		flex-grow: 100;
+	}
+	.sale_buttons_right .sale_button{
+		min-width: 110px;
+	}
+	.sale_block .sale_selector{}
+	.sale_block .sale_buy{
+		border: 1px solid rgba(0,0,0,0.4);
+	}
+	.sale_block .sale_button{
+		position: relative;
+		display: block;
+		padding: 11px 16px;
+		background-color: #833caa;
+		color: #ffffff;
+		font-weight: 700;
+		text-align: center;
+		text-transform: uppercase;
+		overflow: hidden;
+		cursor: pointer;
+		transition: all 0.2s ease-in-out;
+	}
+	.sale_block .sale_button:hover{
+		color: #121212;
+	}
+	.sale_block .sale_button:before,
+	.sale_block .sale_button:after{
+		content: "";
+		position: absolute;
+		top: 0;
+		left: -50%;
+		z-index: 2;
+		display: block;
+		width: 50%;
+		height: 100%;
+		background-color: #ffeb2e;
+		transition: all 0.4s ease-in-out;
+	}
+	.sale_block .sale_button:after{
+		left: auto;
+		right: -50%;
+	}
+	.sale_block .sale_button:hover:before{
+		left: 0;
+	}
+	.sale_block .sale_button:hover:after{
+		left: auto;
+		right: 0;
+	}
+	.sale_block .sale_button span{
+		position: relative;
+		z-index: 4;
+	}
+
+	.sale_block .select{
+	    position: relative;
+	    background-color: #ffffff;
+	}
+	.sale_block .select_option{
+	    width: 100%;
+	    padding: 8px 16px;
+	    background-color: #ffffff;
+	    cursor: pointer;
+	    transition: all 0.2s ease-in-out;
+	    -webkit-transition: all 0.2s ease-in-out;
+	}
+	.sale_block .select_option:hover{
+	    background-color: #f4f4f4;
+	}
+	.sale_block .select_tit{
+		position: relative;
+	    display: flex;
+	    justify-content: center;
+	    padding-right: 20px;
+	    font-weight: 400;
+	    border: 1px solid rgba(0,0,0,0.2);
+	}
+	.sale_block .select_tit:before,
+	.sale_block .select_tit:after{
+		content: "";
+	    position: absolute;
+	    top: 50%;
+	    right: 6px;
+	    display: block;
+	    width: 8px;
+	    height: 2px;
+	    background-color: #121212;
+	    transform: rotate(-45deg);
+	    transition: all 0.2s ease-in-out;
+	}
+	.sale_block .select_tit:after{
+    	right: 11px;
+		transform: rotate(45deg);
+	}
+	.sale_block .select.active .select_tit:before{
+	    transform: rotate(45deg);
+	}
+	.sale_block .select.active .select_tit:after{
+		transform: rotate(-45deg);
+	}
+	.sale_block .select_option.selected{
+	    display: none;
+	}
+	.sale_block .select_list_outer{
+	    position: absolute;
+	    left: 0;
+	    bottom: 1px;
+	    z-index: 10;
+	    height: 0;
+	    width: 100%;
+	    opacity: 0;
+	    overflow: hidden;
+	    border-left: 1px solid rgba(0,0,0,0.2);
+	    border-right: 1px solid rgba(0,0,0,0.2);
+	    border-bottom: 1px solid rgba(0,0,0,0.2);
+	    transform: translateY(100%);
+	    -webkit-transform: translateY(100%);
+	}
+	.sale_block .select.active .select_list_outer{
+	    height: auto;
+	    opacity: 1;
+	    transition: opacity 0.4s ease-in-out;
+	}
+
+	@media screen and (max-width: 768px){
+		.sale_item{
+			flex-wrap: wrap;
+			margin-bottom: 10px;
+		}
+		.sale_item-top{
+			display: none;
+		}
+		.sale_title{
+			width: 70%;
+			padding-right: 10px;
+		}
+		.sale_places{
+			width: 30%;
+			min-width: 0;
+		}
+		.sale_prices{
+			width: 100%;
+			justify-content: flex-end;
+		}
+		.sale_price{
+			width: 180px;
+			min-width: 180px;
+			margin-top: 10px;
+		}
+		.sale_price_title{
+			display: inline-block;
+			margin-right: 10px;
+		}
+		.sale_sum{
+			margin-bottom: 10px;
+		}
+	}
+	@media screen and (max-width: 420px){
+		.sale_prices{
+			display: block;
+		}
+		.sale_price{
+			width: 100%;
+			min-width: 0;
+		}
+		.sale_sum{
+			flex-direction: column;
+		}
+		.sale_sum_text{
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		.sale_sum_price{
+			width: 100%;
+			min-width: 0;
+			text-align: center;
+		}
+		.sale_buttons_right{
+			flex-direction: column;
+		}
+	}
+</style>
+
+	<div class="sale_block">
+		<form class="sale_form">
+			<p class="sale_text">Виберіть  кількість квитків, що ви бажаєте придбати</p>
+
+			<div class="sale_box">
+				<div class="sale_item sale_item-top">
+					<div class="sale_title-top">Тип</div>
+					<div class="sale_title-top">Кількість</div>
+					<div class="sale_title-top">Ціна</div>
+					<div class="sale_title-top">Сума</div>
+				</div>
+				<div class="sale_item">
+					<div class="sale_title"><b>Для дорослих</b></div>					
+					<div class="sale_places">
+						<select class="sale_selector">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
+						</select>
+					</div>
+					<div class="sale_prices">
+						<div class="sale_price"><span class="sale_price_title">Ціна</span><span>150,00 грн.</span></div>
+						<div class="sale_price"><span class="sale_price_title">Сума</span><span>0,00 грн.</span></div>
+					</div>
+				</div>
+				<div class="sale_item">
+					<div class="sale_title"><b>Для пенсіонерів та студентів</b><br />Щоб скористатись пільговий ціною, необхідно... Вставте текст.</div>
+					<div class="sale_places">
+						<select class="sale_selector">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
+						</select>
+					</div>
+					<div class="sale_prices">
+						<div class="sale_price"><span class="sale_price_title">Ціна</span><span>150,00 грн.</span></div>
+						<div class="sale_price"><span class="sale_price_title">Сума</span><span>0,00 грн.</span></div>
+					</div>
+				</div>
+				<div class="sale_item">
+					<div class="sale_title"><b>Для школярів</b></div>
+					<div class="sale_places">
+						<select class="sale_selector">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
+						</select>
+					</div>
+					<div class="sale_prices">
+						<div class="sale_price"><span class="sale_price_title">Ціна</span><span>150,00 грн.</span></div>
+						<div class="sale_price"><span class="sale_price_title">Сума</span><span>0,00 грн.</span></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="sale_sum">
+				<div class="sale_sum_text">Загальна сума</div>
+				<div class="sale_sum_price"><b>800,00 грн</b></div>
+			</div>
+			
+			<div class="sale_buttons">
+				<div class="sale_buttons_image"></div>
+				<div class="sale_buttons_right">
+					<button class="sale_button"><span>Купить</span></button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+
+<script>
+emulateSelector('.sale_selector');
+
+function emulateSelector(select){
+    let selects = document.querySelectorAll(select);
+
+    selects.forEach((select) =>{
+        select.hidden = true;
+
+        let emul = document.createElement('div');
+        emul.classList = "select";
+        emul.onclick = ()=>emul.classList.toggle('active');
+        emul.setAttribute('tabindex','1');
+        emul.onblur = function(){
+            this.classList.remove('active');
+        };
+
+        let tit = document.createElement('div');
+        tit.classList = "select_option select_tit";
+        tit.onclick = () => select.classList.toggle('active');
+        emul.append(tit);
+
+        let emulListOuter = document.createElement('div');
+        emulListOuter.classList = "select_list_outer";
+        emul.append(emulListOuter);
+
+        let emulList = document.createElement('div');
+        emulList.classList = "select_list";
+        emulListOuter.append(emulList);
+
+        select.querySelectorAll('option').forEach((item)=>{
+            let option = document.createElement('div');
+            option.classList = "select_option";
+            option.innerHTML = item.innerHTML;
+            option.dataset.value = item.value;
+
+            option.onclick = ()=>{
+                if(!emul.classList.contains('active')) return;
+                select.value=option.dataset.value;
+                tit.textContent = option.textContent;
+
+                let evt = document.createEvent('HTMLEvents');
+                evt.initEvent('change', true, true);
+                select.dispatchEvent(evt);
+
+                option.parentNode.querySelectorAll('.select_option').forEach((option)=>{
+                    option.classList.remove('selected')
+                });
+                option.classList.add('selected');
+            };
+
+            if(item.selected){
+                option.classList.add('selected');
+                tit.textContent = item.textContent;
+            } 
+            if(item.dataset.default == 'true') option.classList.add('default');
+            if(item.disabled) option.classList.add('disabled');
+            emulList.append(option);
+        });
+
+        select.parentNode.append(emul);
+
+        let heightStart = emul.querySelector('.select_option').offsetHeight;
+        let heightEnd = 0;
+        emul.querySelectorAll('.select_option').forEach((option)=>{
+            heightEnd += option.offsetHeight;
+        });
+        //emul.style.height = heightStart + 'px';
+        //emul.querySelector('.select_list').style.maxHeight = heightStart + 'px';
+    })
+
+    let z = 1;
+    for(let i=selects.length - 1; i>=0; i--){
+        selects[i].parentNode.querySelector('.select').style.zIndex = `${z}0`;
+        z++;
+    }
+};
+</script>
+</body>
+</html>
