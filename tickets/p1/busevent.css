@@ -1,0 +1,105 @@
+.bustickets_popup_container{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	min-width: 100vw;
+	min-height: 100vh;
+	padding: 20px 10px;
+	overflow-y: auto;
+}
+.bustickets_popup_background{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 20;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.8);
+	cursor: pointer;
+}
+.bustickets_popup_content{
+	position: relative;
+	z-index: 40;
+	width: 100%;
+	max-width: 480px;
+	padding: 40px;
+	background-color: #faf9f5;
+	border-radius: 3px;
+}
+.bustickets_form{}
+.bustickets_form_box{}
+.bustickets_form_item{
+	margin-bottom: 40px;
+}
+.bustickets_form_item:last-of-type{
+	margin-bottom: 0;
+}
+.bustickets_form_item-double{
+	display: flex;
+	justify-content: space-between;
+}
+.bustickets_form_item_label{
+	display: block;
+	margin-bottom: 3px;
+}
+.bustickets_form_item_label_star{
+	color: #e85c41;
+    font-size: 150%;
+    font-weight: normal;
+    position: relative;
+    top: 5px;
+}
+.bustickets_form_item input{
+	display: block;
+	width: 100%;
+	height: 28px;
+    line-height: 28px;
+    vertical-align: middle;
+    box-shadow: 0 0 3px rgb(0 0 0 / 30%) inset;
+    background: #fff;
+    border: 0;
+    color: #666666;
+    border: 1px solid #ABB0B2;
+    border-radius: 3px;
+    padding: 8px 0;
+    text-indent: 2%;
+}
+.bustickets_form_item_error{
+	display: none;
+}
+.bustickets_form_item_selector{
+	flex-grow: 100;
+}
+.bustickets_selector_emulate{}
+.bustickets_form_item_button{}
+.bustickets_button{
+	display: inline-block;
+	clear: both;
+    background-color: #aaa;
+    background-image: linear-gradient(to bottom, #aaa 0%,#aaa 100%);	
+    border: 0 none;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: normal;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 22px;
+    text-align: center;
+    text-decoration: none;
+    cursor: initial;
+}
+.bustickets_button:not(.disabled){
+    background-image: linear-gradient(to bottom, #eaef6c 0%,#f2df5e 100%);	
+    cursor: pointer;
+}
+.bustickets_button:hover{
+	transform: scale(1.06);
+}
