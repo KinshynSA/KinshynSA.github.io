@@ -24,8 +24,8 @@ class Popup{
 				type: 'tel',
 				label: 'Телефон',
 				mask: {
-					prefix: '+38',
-					body: '(XXX)-XXX-XX-XX'
+					prefix: '+38(',
+					body: 'XXX)-XXX-XX-XX'
 				},
 				requiered: 'requiered'
 			},
@@ -244,7 +244,9 @@ class Popup{
 	}
 
 	setMask(input, mask){
-		input.addEventListener('focus')
+		input.addEventListener('focus', (e) => {
+			if(input.value == '') input.value = mask.prefix;
+		})
 
 		input.addEventListener('input', (e) => {
 			let selectionPosition = input.selectionStart;
@@ -274,13 +276,14 @@ class Popup{
 					}						
 				} else {
 					result.push(n);
-					if(i>=selectionPosition - 1) symbolsCounter++;
+					if(i>=selectionPosition) symbolsCounter++;
 				}
 			})
 
 			handlerDelete();			
 				
 			input.value = `${mask.prefix}${result.join('')}`;
+			console.log(symbolsCounter,selectionPosition,input.selectionStart)
 			if(symbolsCounter + selectionPosition < input.selectionStart) input.selectionStart = input.selectionEnd = selectionPosition;
 
 			function handlerDelete(){
