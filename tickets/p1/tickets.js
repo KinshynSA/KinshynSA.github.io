@@ -24,7 +24,7 @@ class Popup{
 				type: 'tel',
 				label: 'Телефон',
 				mask: {
-					prefix: '+380',
+					prefix: '+38',
 					body: '(XXX)-XXX-XX-XX'
 				},
 				requiered: 'requiered'
@@ -68,7 +68,6 @@ class Popup{
 
 	createNode(p){
 		let el = document.createElement(`${p.tag ? p.tag : 'div'}`);
-		
 		for(let k in p){
 			if(k === 'cl' && p.cl){
 				if(Array.isArray(p.cl)){
@@ -159,7 +158,7 @@ class Popup{
 			select.append(input);
 			item.append(select);
 		} else {
-			let input = this.createNode({tag: 'input', type: `${p.type ? p.type : 'text'}`, name: `${p.name ? p.name : ''}`, requiered: p.requiered, oninput: this.onInput, onchange: this.onChange, mask: `${p.mask ? p.mask : ''}`});
+			let input = this.createNode({tag: 'input', type: `${p.type ? p.type : 'text'}`, name: `${p.name ? p.name : ''}`, requiered: p.requiered, oninput: this.onInput, onchange: this.onChange, mask: p.mask});
 			let error = this.createNode({tag: 'span', cl: 'tickets_form_item_error', text: 'Проверьте введенные данные'});
 			item.append(input)
 			item.append(error)				
@@ -247,13 +246,17 @@ class Popup{
 	setMask(input, mask){
 		input.addEventListener('input', (e) => {
 			let selectionPosition = input.selectionStart;
-			let v = input.value.replace(/\D/g,"").split('');
+			let v = input.value;
+			console.log('v1',v,v.indexOf(mask.prefix) === 0)
+			if(v.indexOf(mask.prefix) === 0) v = v.slice(mask.prefix.length);
+			console.log('v2',v)
+			v = v.replace(/\D/g,"").split('');
 			//console.log(e)
 
 			let result = [];
 			let flag = false;
-			let symbolsCounter = 0;
-			mask.split('').forEach((n,i) => {
+			let symbolsCounter = mask.prefix.length;
+			mask.body.split('').forEach((n,i) => {
 				if(flag) return;
 				if(n == 'X'){
 					if(v.length){
@@ -269,11 +272,12 @@ class Popup{
 
 			handlerDelete();			
 				
-			input.value = result.join('');
+			input.value = `${mask.prefix}${result.join('')}`;
 			//console.log(symbolsCounter,selectionPosition,input.selectionStart)
 			if(symbolsCounter + selectionPosition < input.selectionStart) input.selectionStart = input.selectionEnd = selectionPosition;
 
 			function handlerDelete(){
+				if(selectionPosition <= mask.prefix.length) return;
 				if((e.inputType == 'deleteContentBackward' || e.inputType == 'deleteContentForward') && result.length && isNaN(result[result.length - 1])){
 					result.pop();
 					handlerDelete();
