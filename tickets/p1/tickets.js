@@ -244,25 +244,33 @@ class Popup{
 	}
 
 	setMask(input, mask){
+		input.addEventListener('focus')
+
 		input.addEventListener('input', (e) => {
 			let selectionPosition = input.selectionStart;
 			let v = input.value;
-			console.log('v1',v,v.indexOf(mask.prefix) === 0)
-			if(v.indexOf(mask.prefix) === 0) v = v.slice(mask.prefix.length);
-			console.log('v2',v)
+
+			let flagMaskPrefix = false;
+			mask.prefix.split('').forEach((x,m,arr) => {
+				if(flagMaskPrefix) return;
+				let p = arr.slice(0,arr.length - m).join('');
+				if(v.indexOf(p) === 0){
+					v = v.slice(p.length);
+					flagMaskPrefix = true;
+				}
+			})
 			v = v.replace(/\D/g,"").split('');
-			//console.log(e)
 
 			let result = [];
-			let flag = false;
+			let flagMaskBody = false;
 			let symbolsCounter = mask.prefix.length;
 			mask.body.split('').forEach((n,i) => {
-				if(flag) return;
+				if(flagMaskBody) return;
 				if(n == 'X'){
 					if(v.length){
 						result.push(v.splice(0,1));
 					} else {
-						flag = true;
+						flagMaskBody = true;
 					}						
 				} else {
 					result.push(n);
@@ -273,7 +281,6 @@ class Popup{
 			handlerDelete();			
 				
 			input.value = `${mask.prefix}${result.join('')}`;
-			//console.log(symbolsCounter,selectionPosition,input.selectionStart)
 			if(symbolsCounter + selectionPosition < input.selectionStart) input.selectionStart = input.selectionEnd = selectionPosition;
 
 			function handlerDelete(){
