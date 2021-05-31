@@ -23,10 +23,7 @@ class Popup{
 				name: 'phone',
 				type: 'tel',
 				label: 'Телефон',
-				mask: {
-					prefix: '+38(',
-					body: 'XXX)-XXX-XX-XX'
-				},
+				mask: '+{38}(000)-000-00-00',
 				requiered: 'requiered'
 			},
 			{
@@ -244,56 +241,7 @@ class Popup{
 	}
 
 	setMask(input, mask){
-		input.addEventListener('focus', (e) => {
-			if(input.value == '') input.value = mask.prefix;
-		})
-
-		input.addEventListener('input', (e) => {
-			let selectionPosition = input.selectionStart;
-			let v = input.value;
-
-			let flagMaskPrefix = false;
-			mask.prefix.split('').forEach((x,m,arr) => {
-				if(flagMaskPrefix) return;
-				let p = arr.slice(0,arr.length - m).join('');
-				if(v.indexOf(p) === 0){
-					v = v.slice(p.length);
-					flagMaskPrefix = true;
-				}
-			})
-			v = v.replace(/\D/g,"").split('');
-
-			let result = [];
-			let flagMaskBody = false;
-			let symbolsCounter = mask.prefix.length;
-			mask.body.split('').forEach((n,i) => {
-				if(flagMaskBody) return;
-				if(n == 'X'){
-					if(v.length){
-						result.push(v.splice(0,1));
-					} else {
-						flagMaskBody = true;
-					}						
-				} else {
-					result.push(n);
-					if(i>=selectionPosition) symbolsCounter++;
-				}
-			})
-
-			handlerDelete();			
-				
-			input.value = `${mask.prefix}${result.join('')}`;
-			if(symbolsCounter + selectionPosition < input.selectionStart) input.selectionStart = input.selectionEnd = selectionPosition;
-
-			function handlerDelete(){
-				if(selectionPosition <= mask.prefix.length) return;
-				if((e.inputType == 'deleteContentBackward' || e.inputType == 'deleteContentForward') && result.length && isNaN(result[result.length - 1])){
-					result.pop();
-					handlerDelete();
-				}
-			}
-			return;
-		})
+		IMask(input, {mask: mask});
 	}
 
 	close(){
