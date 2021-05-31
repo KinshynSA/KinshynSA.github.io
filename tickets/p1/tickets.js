@@ -201,7 +201,7 @@ class Popup{
 
 		switch (name){
 	      case 'phone':
-	        if(value.length !== 10 && value.length !== 12) error = true;
+	        if(value.replace(/\D/g,"").length !== 12) error = true;
 	        break;
 	      case 'email':
 	        const r = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -283,7 +283,6 @@ class Popup{
 			handlerDelete();			
 				
 			input.value = `${mask.prefix}${result.join('')}`;
-			console.log(symbolsCounter,selectionPosition,input.selectionStart)
 			if(symbolsCounter + selectionPosition < input.selectionStart) input.selectionStart = input.selectionEnd = selectionPosition;
 
 			function handlerDelete(){
