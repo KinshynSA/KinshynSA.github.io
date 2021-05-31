@@ -23,6 +23,10 @@ class Popup{
 				name: 'phone',
 				type: 'tel',
 				label: 'Телефон',
+				mask: {
+					prefix: '+380',
+					body: '(XXX)-XXX-XX-XX'
+				},
 				requiered: 'requiered'
 			},
 			{
@@ -75,6 +79,7 @@ class Popup{
 			} 
 			if(k === 'text' && p.text) el.textContent = p.text;
 			if(k === 'datasetValue' && p.datasetValue) el.dataset.value = p.datasetValue;
+			if(k === 'mask' && p.mask) this.setMask(el,p.mask);
 			el[k] = p[k]
 		}
 		return el;
@@ -103,12 +108,7 @@ class Popup{
 		this.content.append(this.close);
 		this.content.append(this.form);
 		this.form.append(this.formBox);
-		document.querySelector('body').append(this.container)
-		this.container.addEventListener('input', (e)=>{
-			if(e.target.closest('input[type=tel]')){
-				e.target.value = e.target.value.replace(/\D/g,"");
-			}
-		})
+		document.querySelector('body').append(this.container);
 	}
 
 	createItem(p){
@@ -159,7 +159,7 @@ class Popup{
 			select.append(input);
 			item.append(select);
 		} else {
-			let input = this.createNode({tag: 'input', type: `${p.type ? p.type : 'text'}`, name: `${p.name ? p.name : ''}`, requiered: p.requiered, oninput: this.onInput, onchange: this.onChange});
+			let input = this.createNode({tag: 'input', type: `${p.type ? p.type : 'text'}`, name: `${p.name ? p.name : ''}`, requiered: p.requiered, oninput: this.onInput, onchange: this.onChange, mask: `${p.mask ? p.mask : ''}`});
 			let error = this.createNode({tag: 'span', cl: 'tickets_form_item_error', text: 'Проверьте введенные данные'});
 			item.append(input)
 			item.append(error)				
@@ -242,6 +242,45 @@ class Popup{
 		} else {
 			this.button.disabled = true;
 		}
+	}
+
+	setMask(input, mask){
+		input.addEventListener('input', (e) => {
+			let selectionPosition = input.selectionStart;
+			let v = input.value.replace(/\D/g,"").split('');
+			//console.log(e)
+
+			let result = [];
+			let flag = false;
+			let symbolsCounter = 0;
+			mask.split('').forEach((n,i) => {
+				if(flag) return;
+				if(n == 'X'){
+					if(v.length){
+						result.push(v.splice(0,1));
+					} else {
+						flag = true;
+					}						
+				} else {
+					result.push(n);
+					if(i>=selectionPosition - 1) symbolsCounter++;
+				}
+			})
+
+			handlerDelete();			
+				
+			input.value = result.join('');
+			//console.log(symbolsCounter,selectionPosition,input.selectionStart)
+			if(symbolsCounter + selectionPosition < input.selectionStart) input.selectionStart = input.selectionEnd = selectionPosition;
+
+			function handlerDelete(){
+				if((e.inputType == 'deleteContentBackward' || e.inputType == 'deleteContentForward') && result.length && isNaN(result[result.length - 1])){
+					result.pop();
+					handlerDelete();
+				}
+			}
+			return;
+		})
 	}
 
 	close(){
