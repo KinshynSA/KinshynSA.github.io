@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { TitleAnim, Container, TagsTextDecorator, Works } from "../../components";
 import useText from "../../hooks/useText.js";
+import { Helmet } from "react-helmet";
 
 
 const ContainerStyled = styled(Container)`
@@ -25,6 +26,10 @@ export default function WorksPage(){
 
     return (
         <ContainerStyled>
+            <Helmet>
+                <title>{text('works.text.title')}</title>
+            </Helmet>
+
             <ContentWrapper tag={'html'}>
                 <Content tag={'body'}>
                     <Title tag={'h1'}>

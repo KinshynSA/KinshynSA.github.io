@@ -5,6 +5,7 @@ import screenSizes from "../../constants/screenSizes";
 import urls from "../../constants/urls";
 import { TitleAnim, Container, TagsTextDecorator, Button, Skills } from "../../components";
 import useText from "../../hooks/useText.js";
+import { Helmet } from "react-helmet";
 
 
 const ContainerStyled = styled(Container)`
@@ -60,6 +61,10 @@ export default function HomePage(){
 
     return (
         <ContainerStyled>
+            <Helmet>
+                <title>Portfolio</title>
+            </Helmet>
+
             <TextWrapper tag={'html'}>
                 <TextContent tag={'body'}>
                     <Title tag={'h1'}>

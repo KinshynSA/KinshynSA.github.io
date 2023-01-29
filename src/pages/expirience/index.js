@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { TitleAnim, Container, TagsTextDecorator, Experience } from "../../components";
 import useText from "../../hooks/useText.js";
+import { Helmet } from "react-helmet";
 
 
 const TextWrapper = styled(TagsTextDecorator)`
@@ -27,6 +28,10 @@ export default function ExpiriencePage(){
 
     return (
         <Container>
+            <Helmet>
+                <title>{text('experience.text.title')}</title>
+            </Helmet>
+
             <TextWrapper tag={'html'}>
                 <TextContent tag={'body'}>
                     <Title tag={'h1'}>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { TitleAnim, Container, TagsTextDecorator, TagsCloud } from "../../components";
 import screenSizes from "../../constants/screenSizes";
 import useText from "../../hooks/useText.js";
+import { Helmet } from "react-helmet";
 
 
 const ContainerStyled = styled(Container)``
@@ -53,6 +54,11 @@ export default function SkillsPage(){
 
     return (
         <ContainerStyled>
+            <Helmet>
+                <title>{text('skills.text.title')}</title>
+            </Helmet>
+
+
             <TextWrapper tag={'html'}>
                 <Text tag={'body'}>
                     <Title tag={'h1'}>
@@ -65,7 +71,7 @@ export default function SkillsPage(){
                         <p>{text('skills.text.p2')}</p>
                     </TagsTextDecorator>
                     <TitleMobile tag={'h2'}>
-                        <TitleAnim tag={'h2'} text={'skills.text.titlestack'} />
+                        <TitleAnim tag={'h2'} text={text('skills.text.titlestack')} />
                     </TitleMobile>
                     <TagsCloudMobile />
                 </Text>

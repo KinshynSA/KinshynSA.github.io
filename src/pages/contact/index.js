@@ -6,6 +6,7 @@ import {sendContactForm} from "../../service/service";
 import { addAlertAction } from "../../store/alertReducer";
 import { hidePreloaderAction, showPreloaderAction } from "../../store/preloaderReducer";
 import useText from "../../hooks/useText.js";
+import { Helmet } from "react-helmet";
 
 
 const TextWrapper = styled(TagsTextDecorator)`
@@ -63,6 +64,10 @@ export default function ContactPage(){
 
     return (
         <Container>
+            <Helmet>
+                <title>{text('contact.text.title')}</title>
+            </Helmet>
+
             <TextWrapper tag={'html'}>
                 <TextContent tag={'body'}>
                     <Title tag={'h1'}>

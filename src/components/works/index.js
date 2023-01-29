@@ -44,12 +44,12 @@ export default function Works(props){
             imageName: 'land',
             link: 'https://github.com/KinshynSA/land',
         },
-        {
+        /*{
             title: text('works.list.item6.title'),
             undertitle: text('works.list.item6.undertitle'),
             imageName: 'rc-gaming',
             link: 'https://kinshynsa.github.io/sites/rc-gaming/index.html',
-        },
+        },*/
     ];
 
     
