@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/KinshynSA/static/css/main.24d68e82.css",
+    "main.js": "/KinshynSA/static/js/main.d1e27c57.js",
+    "static/media/background.png": "/KinshynSA/static/media/background.b01fb9e124446d429d98.png",
+    "static/media/denovo.jpg": "/KinshynSA/static/media/denovo.b02071b2f127a54d8c4b.jpg",
+    "static/media/objava.jpg": "/KinshynSA/static/media/objava.2d9a69b70395939d45ae.jpg",
+    "static/media/rc-gaming.jpg": "/KinshynSA/static/media/rc-gaming.b931538bb0115954c282.jpg",
+    "static/media/land.jpg": "/KinshynSA/static/media/land.28f5ba2192020d0cb32d.jpg",
+    "static/media/rentflot.jpg": "/KinshynSA/static/media/rentflot.8e7fdf601b0f8f350b35.jpg",
+    "static/media/skillsetter.jpg": "/KinshynSA/static/media/skillsetter.771cd334540f7bb1a1e1.jpg",
+    "static/media/rc-gaming.webp": "/KinshynSA/static/media/rc-gaming.4003c8a84ff128a32ba2.webp",
+    "static/media/meteozakhist.jpg": "/KinshynSA/static/media/meteozakhist.3e7aab81c03c9e27dedf.jpg",
+    "static/media/rentflot.webp": "/KinshynSA/static/media/rentflot.0f7254135a292ad11fac.webp",
+    "static/media/skillsetter.webp": "/KinshynSA/static/media/skillsetter.c0f278f67d332f3b1d7c.webp",
+    "static/media/land.webp": "/KinshynSA/static/media/land.ba707836c08e5c00c653.webp",
+    "static/media/meteozakhist.webp": "/KinshynSA/static/media/meteozakhist.46d27536cc72ce6ebaf3.webp",
+    "static/media/logo.svg": "/KinshynSA/static/media/logo.a5e98d634a9716837d3b74aa8cd70880.svg",
+    "static/media/objava.webp": "/KinshynSA/static/media/objava.687b5e6b3fbc548ba15e.webp",
+    "static/media/socGithub.svg": "/KinshynSA/static/media/socGithub.b376a8e4185ca74a4f650a3337022cce.svg",
+    "static/media/alertError.svg": "/KinshynSA/static/media/alertError.bb1badf20a3cf2798f0cfe2d52fc704e.svg",
+    "static/media/alertSucces.svg": "/KinshynSA/static/media/alertSucces.e8bf198d6236754e141b27cec1f7fdc5.svg",
+    "static/media/close.svg": "/KinshynSA/static/media/close.5c3f823e278631f79d0013b6856eb132.svg",
+    "static/media/menu.svg": "/KinshynSA/static/media/menu.474ee52dbc10cedd7cc066d7e577244a.svg",
+    "index.html": "/KinshynSA/index.html",
+    "static/media/socLinkedin.svg": "/KinshynSA/static/media/socLinkedin.c9ac63264b122d1a29ee6f9046095d12.svg",
+    "main.24d68e82.css.map": "/KinshynSA/static/css/main.24d68e82.css.map",
+    "main.d1e27c57.js.map": "/KinshynSA/static/js/main.d1e27c57.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.24d68e82.css",
+    "static/js/main.d1e27c57.js"
+  ]
+}
