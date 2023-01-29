@@ -2,8 +2,6 @@ const defaultState = {
     lang: localStorage.getItem('language') ?? 'ua',
 }
 
-console.log(localStorage.getItem('language'))
-
 const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
 
 export const languageReducer = (state = defaultState, action) => {

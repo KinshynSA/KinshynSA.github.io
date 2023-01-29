@@ -3,6 +3,7 @@ import {
     BrowserRouter,
     Routes,
     Route,
+    HashRouter,
 } from "react-router-dom";
 import { Provider } from 'react-redux';
 import ExpiriencePage from './pages/expirience';
@@ -19,7 +20,7 @@ import "./assets/scss/main.scss";
 export default function App(){
     return (
         <Provider store={store}>
-            <BrowserRouter>
+            <HashRouter>
                 <Routes>
                     <Route path={urls.home} element={
                         <PageWrapper>
@@ -47,7 +48,7 @@ export default function App(){
                         </PageWrapper>
                     } />
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
         </Provider>
     )
 }
