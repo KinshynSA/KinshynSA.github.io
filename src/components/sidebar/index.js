@@ -64,7 +64,7 @@ color: var(--gray500);
 
 @media screen and (max-width: ${screenSizes.TABLET}){
     position: relative;
-    animation: ${props => props.hideSidebar ? 'var(--hideToRightFast)' : 'var(--showFromLeftFast)'};
+    animation: ${props => props.isSidebarHidden ? 'var(--hideToRightFast)' : 'var(--showFromLeftFast)'};
 }
 `
 const LogoPart = styled.div`
@@ -221,7 +221,7 @@ export default function Sidebar(props){
     const location = useLocation();
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState();
-    const [hideSidebar, setHideSidebar] = useState();
+    const [isSidebarHidden, setIsSidebarHidden] = useState();
     const text = useText();
 
     function handleLinkClick(url){
@@ -236,25 +236,29 @@ export default function Sidebar(props){
     }, [])
 
     useEffect(() => {
-        if(document.documentElement.clientWidth <= +parseInt(screenSizes.TABLET)){
-            setHideSidebar(true);
-        }
+        hideSidebar()
     }, [location])
 
+    function hideSidebar(){
+        if(document.documentElement.clientWidth <= +parseInt(screenSizes.TABLET)){
+            setIsSidebarHidden(true);
+        }
+    }
+
     useEffect(() => {
-        if(hideSidebar){
+        if(isSidebarHidden){
             setTimeout(() => {
                 setIsOpen(false);
-                setHideSidebar(false);
+                setIsSidebarHidden(false);
             }, 500)
         }
-    }, [hideSidebar])
+    }, [isSidebarHidden])
 
     return (
         <Wrapper>
             <Inner>
                 {isOpen && (            
-                    <Block hideSidebar={hideSidebar}>
+                    <Block isSidebarHidden={isSidebarHidden}>
                         <LogoPart>
                             <LogoLink to={urls.home}>
                                 <Logo />
@@ -270,7 +274,9 @@ export default function Sidebar(props){
                                 <LinkItem isActive={urls.contact === location.pathname} onClick={() => handleLinkClick(urls.contact)}><span>{text('sidebar.menu.link4')}</span></LinkItem>
                             </Links>
                         </LinksPart>
-                        <LangSwitcher />
+                        <LangSwitcher
+                            onClick={hideSidebar}
+                        />
                         <SocPart>
                             <SocLink href={urls.github} target="_blank">
                                 <IconSocGithub />
@@ -282,7 +288,7 @@ export default function Sidebar(props){
                     </Block>
                 )}
                 {isOpen ? (
-                    <CloseButton onClick={() => setHideSidebar(true)}>
+                    <CloseButton onClick={() => setIsSidebarHidden(true)}>
                         <IconClose />
                     </CloseButton>
                 ) : (

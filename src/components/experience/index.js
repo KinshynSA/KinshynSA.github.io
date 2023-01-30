@@ -16,6 +16,7 @@ const Box = styled.div`
 
     @media screen and (max-width: ${screenSizes.MOBILE}){
         grid-template-columns: 1fr;
+        grid-column-gap: 0;
     }
 `;
 

@@ -16,16 +16,17 @@ display: ${props => props.full ? 'inline-block' : 'inline'};
     100%{transform: scale(1,1)}
 }
 `
+const H1 = styled.h1`
+color: var(--green);
+user-select: none;
+`
+const Title = ({children, ...props}) => <H1 {...props}>{children}</H1>
 
 
 export default function TitleAnim(props){
-    const Title = styled[props.tag ?? 'h1']`
-    color: var(--green);
-    user-select: none;
-    `
 
     return (
-        <Title>{props.text.split('').map((c,i) => {
+        <Title as={props.tag ?? 'h1'}>{props.text.split('').map((c,i) => {
             return (
                 <Char key={i} full={c !== ' '}>{c}</Char>
             )

@@ -61,8 +61,7 @@ animation: lineInner 1s infinite;
 
 export default function Preloader(props){
     const dispatch = useDispatch();
-    const isExist = useSelector(state => state.preloader.isExist);
-    const isVisible = useSelector(state => state.preloader.isVisible);
+    const { isExist, isVisible, isGlobal } = useSelector(state => state.preloader);
 
     useEffect(() => {
         if(!isVisible && isExist){
@@ -83,6 +82,7 @@ export default function Preloader(props){
             <Block
                 {...props}
                 isVisible={isVisible}
+                position={isGlobal ? 'fixed' : props.position}
             >
                 <Content {...props}>
                     <LogoWrapper>

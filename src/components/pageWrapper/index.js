@@ -17,6 +17,7 @@ color: var(--gray100);
 `
 const Content = styled.div`
 position: relative;
+z-index: 10;
 flex-grow: 100;
 background-image: url(${bg});
 background-size: cover;

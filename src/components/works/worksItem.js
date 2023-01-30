@@ -21,7 +21,7 @@ border: 3px solid var(--green);
 }
 
 @media screen and (max-width: ${screenSizes.MOBILE}){
-    max-width: 90%;
+    max-width: 100%;
     margin-bottom: 60px;
 }
 `

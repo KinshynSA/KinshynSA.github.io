@@ -6,6 +6,7 @@ import urls from "../../constants/urls";
 import { TitleAnim, Container, TagsTextDecorator, Button, Skills } from "../../components";
 import useText from "../../hooks/useText.js";
 import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
 
 
 const ContainerStyled = styled(Container)`
@@ -33,9 +34,21 @@ grid-column-gap: 20px;
 grid-row-gap: 20px;
 margin-top: 20px;
 
+a{    
+    display: block;
+}
+
 @media screen and (max-width: ${screenSizes.MOBILE}){
     flex-direction: column;
     max-width: 300px;
+
+    a{        
+        width: 100%;
+
+        button{
+            width: 100%;
+        }
+    }
 }
 `;
 const ButtonViolet = styled(Button)`
@@ -57,6 +70,7 @@ color: var(--violet);
 
 
 export default function HomePage(){
+    const lang = useSelector(state => state.language.lang);
     const text = useText();
 
     return (
@@ -73,11 +87,12 @@ export default function HomePage(){
                         <TitleAnim text={text('home.text.title.part3')} />
                     </Title>
                     <ButtonContainer>
-                        <ButtonViolet>{text('home.text.button.resume')}</ButtonViolet>
-                        <Button>
-                            <Link to={urls.contact}>{text('home.text.button.contact')}
-                            </Link>
-                        </Button>
+                        <a href={`/FrontendDeveloperKinshynStanislav${lang.toUpperCase()}.pdf`} download>
+                            <ButtonViolet>{text('home.text.button.resume')}</ButtonViolet>
+                        </a>
+                        <Link to={urls.contact}>
+                            <Button>{text('home.text.button.contact')}</Button>
+                        </Link>
                     </ButtonContainer>
                 </TextContent>
             </TextWrapper>

@@ -26,7 +26,7 @@ padding: 20px 0 20px 20px;
 }
 
 @media screen and (max-width: ${screenSizes.MOBILE}){
-    padding: 20px 0 20px 8px;
+    padding: 20px 0 20px 0;
 }
 `
 
