@@ -1,4 +1,4 @@
-export default {
+const translateRU = {
   "home.text.title.part1": "Привет!",
   "home.text.title.part2": "Я Станислав",
   "home.text.title.part3": "Frontend developer",
@@ -68,3 +68,5 @@ export default {
   "works.list.item1.undertitle":
     "Пример верстки сайта с различными анимациями и визуальными эффектами",
 };
+
+export default translateRU;

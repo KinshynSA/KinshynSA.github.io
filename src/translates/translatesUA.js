@@ -1,4 +1,4 @@
-export default {
+const translateUA = {
   "home.text.title.part1": "Привіт!",
   "home.text.title.part2": "Я Станіслав",
   "home.text.title.part3": "Frontend developer",
@@ -67,3 +67,5 @@ export default {
   "works.list.item1.undertitle":
     "Приклад верстки сайту з різними анімаціями та візуальними ефектами.",
 };
+
+export default translateUA;
