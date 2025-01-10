@@ -11,6 +11,10 @@ color: var(--gray500);
 font-size: var(--fs3);
 line-height: var(--lh3);
 
+&:first-of-type{
+    grid-column: 1/3;
+}
+
 &:last-of-type{
     grid-column: 1/3;
 }

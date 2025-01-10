@@ -30,12 +30,13 @@ html{
   --fontTitle: "Roboto Slab", "Open Sans", sans-serif;
   --fontMain: "Open Sans", "Open Sans", sans-serif;
   --fontDecorator: "Caveat", "Open Sans", "Open Sans", sans-serif;
-  --fs1: 18px;
-  --fs2: 16px;
-  --fs3: 14px;
-  --lh1: 26px;
-  --lh2: 24px; 
-  --lh3: 20px; 
+  font-size: 20px;
+  --fs1: 1.12rem;
+  --fs2: 1rem;
+  --fs3: 0.9rem;
+  --lh1: 1.44;
+  --lh2: 1.5; 
+  --lh3: 1.5; 
   --white: #ffffff;
   --black: #000000;
   --green: #08fdd8;
@@ -54,6 +55,15 @@ html{
   --showFromRightFast: showFromRight 0.4s ease-in-out forwards;
   --hideToLeftFast: hideToLeft  0.4s ease-in-out forwards;
   --hideToRightFast: hideToRight  0.4s ease-in-out forwards;
+
+  @media screen and (max-width: 1920px) {
+    --fs1: 18px;
+    --fs2: 16px;
+    --fs3: 14px;
+    --lh1: 26px;
+    --lh2: 24px; 
+    --lh3: 20px;     
+  }
 }
 body{
   position: relative;

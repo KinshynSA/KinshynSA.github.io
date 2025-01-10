@@ -12,27 +12,27 @@ const tagsArr = [
         scale: '1.2',
     }, 
     {
-        name: 'Redux',
+        name: 'TypeScript',
         color: 'var(--green)',
         scale: '0.9',
     },
     {
-        name: 'React Context',
+        name: 'JS',
         color: 'var(--green)',
         scale: '1.1',
     },
     {
-        name: 'Webpack',
+        name: 'React Context',
         color: 'var(--green)',
         scale: '0.8',
     },
     {
-        name: 'JS',
+        name: 'Redux',
         color: 'var(--violet)',
         scale: '1.2',
     },
     {
-        name: 'jQuery',
+        name: 'Webpack',
         color: 'var(--violet)',
         scale: '0.8',
     },
