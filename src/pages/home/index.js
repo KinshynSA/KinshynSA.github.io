@@ -8,7 +8,6 @@ import {
   Container,
   TagsTextDecorator,
   Button,
-  Skills,
 } from "../../components";
 import useText from "../../hooks/useText.js";
 import {Helmet} from "react-helmet";
